@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+/*
+ * ============================================================================
+ *  MEHVANO REALTY — DESIGN TOKENS (single source of truth)
+ * ============================================================================
+ *  Change a value here and it updates across the ENTIRE site.
+ *  - Colors:  edit the --color-* tokens below.
+ *  - Fonts:   edit app/fonts.ts (they flow into --font-display / --font-body).
+ *  - Radii / shadows / spacing rhythm: edit the tokens below.
+ *
+ *  In Tailwind v4 every token here also generates a utility class, e.g.
+ *  --color-gold  ->  bg-gold / text-gold / border-gold
+ *  --radius-lg   ->  rounded-lg
+ *  --shadow-card ->  shadow-card
+ * ============================================================================
+ */
+
+@theme {
+  /* ---- Type families (wired to next/font vars set in app/fonts.ts) ------- */
+  --font-display: var(--font-archivo), "Archivo", system-ui, sans-serif;
+  --font-body: var(--font-inter), "Inter", system-ui, sans-serif;
+
+  /* ---- Brand neutrals (warm) -------------------------------------------- */
+  --color-paper: #ffffff;
+  --color-cream: #f6f3ec;
+  --color-sand: #efe9dd;
+  --color-sand-deep: #e4ddcd;
+  --color-ink: #16130e;
+  --color-charcoal: #201c16;
+  --color-graphite: #34302a;
+
+  /* ---- Accent (gold) ---------------------------------------------------- */
+  --color-gold: #cf9226;
+  --color-gold-bright: #f2b53c;
+  --color-gold-deep: #a9741a;
+
+  /* ---- Foreground / text ------------------------------------------------ */
+  --color-fg: #1a1712;
+  --color-fg-muted: #6b6357;
+  --color-fg-subtle: #948a7c;
+  --color-fg-inverse: #f7f4ee;
+  --color-fg-inverse-muted: #c7bfb2;
+
+  /* ---- Lines / borders -------------------------------------------------- */
+  --color-line: #e6dfd1;
+  --color-line-strong: #d4cab8;
+
+  /* ---- Feedback --------------------------------------------------------- */
+  --color-success: #2f7d5b;
+  --color-danger: #c0492f;
+
+  /* ---- Radii ------------------------------------------------------------ */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+  --radius-2xl: 2.25rem;
+  --radius-3xl: 2.75rem;
+
+  /* ---- Shadows ---------------------------------------------------------- */
+  --shadow-card: 0 1px 2px rgba(20, 17, 13, 0.04), 0 14px 34px -14px rgba(20, 17, 13, 0.18);
+  --shadow-lift: 0 2px 4px rgba(20, 17, 13, 0.05), 0 26px 64px -22px rgba(20, 17, 13, 0.3);
+  --shadow-glass: 0 8px 40px -12px rgba(0, 0, 0, 0.45);
+
+  /* ---- Layout ----------------------------------------------------------- */
+  --spacing-gutter: 1.5rem;
+
+  /* ---- Animation -------------------------------------------------------- */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------------------------------------------------------------------------
+ *  Base layer
+ * ------------------------------------------------------------------------- */
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-fg);
+    font-family: var(--font-body);
+    font-feature-settings: "cv02", "cv03", "cv04", "ss01";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.04;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: var(--color-gold-bright);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ *  Reusable component-level utilities
+ * ------------------------------------------------------------------------- */
+@layer components {
+  /* Frosted glass panel used in the dark hero */
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .glass-dark {
+    background: rgba(22, 19, 14, 0.55);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Gradient wash for the dark hero shell */
+  .hero-veil {
+    background: linear-gradient(
+      104deg,
+      rgba(16, 14, 10, 0.92) 0%,
+      rgba(20, 17, 12, 0.72) 34%,
+      rgba(24, 20, 14, 0.4) 62%,
+      rgba(28, 23, 16, 0.55) 100%
+    );
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(96deg, var(--color-gold-bright), var(--color-gold-deep));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ *  Utilities
+ * ------------------------------------------------------------------------- */
+@utility animate-rise {
+  animation: rise 0.7s var(--ease-out-soft) both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Abstract modern home at dusk">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#2c2822"/>
+      <stop offset="0.55" stop-color="#3c352b"/>
+      <stop offset="1" stop-color="#5b4f3d"/>
+    </linearGradient>
+    <linearGradient id="field" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6b5a3f"/>
+      <stop offset="1" stop-color="#8a744e"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f2b53c" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#c47f1e" stop-opacity="0.35"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0.72" cy="0.32" r="0.5">
+      <stop offset="0" stop-color="#f7d9a0" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#f7d9a0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1600" height="1100" fill="url(#sky)"/>
+  <rect width="1600" height="1100" fill="url(#sun)"/>
+
+  <!-- distant tree line -->
+  <path d="M0 560 Q 220 520 440 555 T 900 545 T 1600 560 L 1600 700 L 0 700 Z" fill="#4a4133" opacity="0.5"/>
+
+  <!-- primary gable house silhouette -->
+  <g fill="#211d17">
+    <path d="M760 620 L980 420 L1200 620 L1200 760 L760 760 Z"/>
+    <path d="M980 420 L1060 350 L1280 550 L1280 760 L1200 760 L1200 620 Z" opacity="0.9"/>
+  </g>
+  <!-- warm lit windows -->
+  <g fill="url(#glow)">
+    <rect x="835" y="600" width="70" height="150" rx="6"/>
+    <rect x="930" y="600" width="70" height="150" rx="6"/>
+    <rect x="1035" y="600" width="60" height="150" rx="6"/>
+    <rect x="1210" y="590" width="45" height="160" rx="6" opacity="0.8"/>
+  </g>
+
+  <!-- secondary structure left -->
+  <g fill="#1c1913">
+    <path d="M360 660 L520 520 L680 660 L680 770 L360 770 Z"/>
+  </g>
+  <rect x="430" y="640" width="60" height="130" rx="6" fill="url(#glow)" opacity="0.75"/>
+
+  <!-- foreground reeds / field -->
+  <rect x="0" y="740" width="1600" height="360" fill="url(#field)"/>
+  <g stroke="#b9a06e" stroke-width="3" opacity="0.5" stroke-linecap="round">
+    <path d="M120 1100 L150 820"/><path d="M180 1100 L200 850"/><path d="M250 1100 L235 800"/>
+    <path d="M340 1100 L365 840"/><path d="M430 1100 L410 810"/><path d="M520 1100 L545 850"/>
+    <path d="M640 1100 L620 820"/><path d="M760 1100 L785 860"/><path d="M900 1100 L880 810"/>
+    <path d="M1040 1100 L1065 850"/><path d="M1180 1100 L1160 820"/><path d="M1320 1100 L1345 855"/>
+    <path d="M1460 1100 L1440 815"/>
+  </g>
+  <rect x="0" y="900" width="1600" height="200" fill="#3a3021" opacity="0.55"/>
+</svg>
