@@ -64,7 +64,7 @@ app/
     listings/         Phase 2 placeholder (IDX gated behind Bright MLS approval)
   api/lead/route.ts   form submissions → CRM
   layout.tsx          root: fonts, global JSON-LD (Organization/WebSite/RealEstateAgent), metadata
-  sitemap.ts, robots.ts, manifest.ts, opengraph-image.tsx, icon.svg, not-found.tsx
+  sitemap.ts, robots.ts, manifest.ts, opengraph-image.tsx, favicon.ico, not-found.tsx
   globals.css         DESIGN TOKENS (single source of truth)
   fonts.ts            FONT CONFIG (single source of truth)
 components/

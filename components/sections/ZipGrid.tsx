@@ -1,4 +1,4 @@
-import { ZIPS } from "@/lib/constants";
+import { ZIPS, stockImage } from "@/lib/constants";
 import { Card } from "@/components/ui/Card";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { Icon } from "@/components/ui/Icon";
@@ -23,6 +23,7 @@ export function ZipGrid({ base = "/home-value", cta = "Get my value" }: ZipGridP
             className="group h-full overflow-hidden"
           >
             <ImagePlaceholder
+              src={stockImage(i)}
               alt={`${zip.city}, MD ${zip.zip}`}
               label={`${zip.city} ${zip.zip}`}
               variant={(i % 4) as 0 | 1 | 2 | 3}

@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/Badge";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
+import { stockImage } from "@/lib/constants";
 import { hrefFor } from "@/lib/cms";
 import { formatMonthYear, stagger } from "@/lib/utils";
 
@@ -26,6 +27,7 @@ export function ArticleCard({ article, index = 0, compact }: ArticleCardProps) {
       <Card href={hrefFor(article)} padding="none" className="group flex h-full flex-col overflow-hidden">
         {!compact ? (
           <ImagePlaceholder
+            src={stockImage(index)}
             alt={article.title}
             label={article.area ?? article.category}
             icon={typeIcon[article.type]}

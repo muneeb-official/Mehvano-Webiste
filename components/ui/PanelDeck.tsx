@@ -6,6 +6,8 @@ import { useEffect, useLayoutEffect, useRef, type CSSProperties, type ReactNode 
 const useIsoLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 const DESKTOP = "(min-width: 1024px)";
+/** Smoothing transition — panels glide toward their scroll target, not 1:1. */
+const PANEL_TRANSITION = "transform 0.65s cubic-bezier(0.22, 1, 0.36, 1)";
 const easeOutCubic = (x: number) => 1 - Math.pow(1 - x, 3);
 const clamp = (x: number, lo: number, hi: number) => (x < lo ? lo : x > hi ? hi : x);
 
@@ -58,7 +60,13 @@ export function PanelDeck({ panels }: { panels: ReactNode[] }) {
       active = true;
       window.addEventListener("scroll", schedule, { passive: true });
       window.addEventListener("resize", schedule, { passive: true });
+      // Snap to the current scroll position without animating, then enable the
+      // smoothing transition so subsequent scroll updates glide.
+      panelEls.forEach((el) => (el.style.transition = "none"));
       paint();
+      requestAnimationFrame(() => {
+        if (active) panelEls.forEach((el) => (el.style.transition = PANEL_TRANSITION));
+      });
     };
 
     const disable = () => {
@@ -68,7 +76,10 @@ export function PanelDeck({ panels }: { panels: ReactNode[] }) {
       window.removeEventListener("resize", schedule);
       if (rafId) cancelAnimationFrame(rafId);
       rafId = 0;
-      panelEls.forEach((el) => (el.style.transform = ""));
+      panelEls.forEach((el) => {
+        el.style.transform = "";
+        el.style.transition = "";
+      });
     };
 
     const desktop = window.matchMedia(DESKTOP);

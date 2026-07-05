@@ -25,6 +25,14 @@ export const metadata: Metadata = {
   authors: [{ name: "Mehvish Aslam" }],
   creator: "Mehvish Aslam",
   alternates: { canonical: "/" },
+  // Adaptive favicon: black "M" on light tabs, white "M" on dark tabs.
+  // /favicon.ico (black) also serves as the default for direct requests.
+  icons: {
+    icon: [
+      { url: "/favicon.ico", media: "(prefers-color-scheme: light)", sizes: "16x16 32x32 48x48", type: "image/x-icon" },
+      { url: "/icon-dark.ico", media: "(prefers-color-scheme: dark)", sizes: "16x16 32x32 48x48", type: "image/x-icon" },
+    ],
+  },
   openGraph: {
     type: "website",
     locale: SITE.locale,

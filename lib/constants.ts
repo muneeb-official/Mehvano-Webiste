@@ -117,6 +117,22 @@ export const STATS = [
 /** Trust/partner logos strip (placeholder labels, mirrors the reference design). */
 export const PARTNERS = ["Bright MLS", "REALTOR®", "MD REC", "Equal Housing", "IDX"] as const;
 
+/**
+ * Property/lifestyle photography used across cards and media frames. Cycled by
+ * index where a component renders several (ZIP cards, article cards). Swap these
+ * for real, licensed listing photos before launch.
+ */
+export const STOCK_IMAGES = [
+  "/images/s-1.jpg",
+  "/images/s-2.jpg",
+  "/images/s-3.jpg",
+  "/images/s-4.jpg",
+  "/images/s-5.jpg",
+] as const;
+
+/** Deterministic image for an item at `index` (wraps around the pool). */
+export const stockImage = (index: number) => STOCK_IMAGES[index % STOCK_IMAGES.length];
+
 /** Legal / compliance strings surfaced in the footer (report §8 compliance). */
 export const LEGAL = {
   equalHousing: "Equal Housing Opportunity.",

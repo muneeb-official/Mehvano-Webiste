@@ -16,10 +16,11 @@ export function Hero() {
   return (
     <section className="relative isolate flex w-full items-center overflow-hidden rounded-b-[2rem] bg-ink sm:rounded-b-[3rem]">
       <Image
-        src="/hero/hero-home.svg"
+        src="/hero/Hero.jpg"
         alt="Modern home at dusk in Maryland"
         fill
         priority
+        sizes="100vw"
         className="-z-10 object-cover"
       />
       <div className="hero-veil absolute inset-0 -z-10" />
@@ -82,10 +83,11 @@ export function Hero() {
             <div className="glass w-full max-w-md rounded-3xl p-3 shadow-glass">
               <div className="relative overflow-hidden rounded-2xl">
                 <Image
-                  src="/hero/hero-home.svg"
+                  src="/images/s-3.jpg"
                   alt="Ellicott City neighborhood"
                   width={520}
                   height={380}
+                  sizes="(max-width: 1024px) 90vw, 30vw"
                   className="h-56 w-full object-cover sm:h-64"
                 />
                 <span className="absolute left-3 top-3 rounded-full bg-black/45 px-3 py-1 text-xs font-medium text-white backdrop-blur">

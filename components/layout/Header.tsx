@@ -46,7 +46,7 @@ export function Header({ overHero }: HeaderProps) {
           : "border-b border-line/70 bg-cream/85 backdrop-blur-lg supports-[backdrop-filter]:bg-cream/70"
       )}
     >
-      <nav className="mx-auto flex h-[4.5rem] w-full max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8">
+      <nav className="mx-auto flex h-[4.5rem] w-[90%] max-w-[1728px] items-center justify-between">
         <Logo tone={transparent ? "inverse" : "default"} />
 
         {/* Desktop nav */}
@@ -102,7 +102,7 @@ export function Header({ overHero }: HeaderProps) {
           open ? "max-h-[26rem]" : "max-h-0"
         )}
       >
-        <div className="flex flex-col gap-1 px-5 py-4">
+        <div className="mx-auto flex w-[90%] max-w-[1728px] flex-col gap-1 py-4">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}

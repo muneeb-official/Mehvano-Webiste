@@ -51,7 +51,7 @@ export function CTABand({
 
   return (
     <section className="relative overflow-hidden bg-ink py-16 sm:py-20">
-      <Image src="/hero/hero-home.svg" alt="" fill className="object-cover opacity-20" aria-hidden />
+      <Image src="/images/s-2.jpg" alt="" fill sizes="100vw" className="object-cover opacity-20" aria-hidden />
       <div className="hero-veil absolute inset-0" aria-hidden />
       <Container className="relative">
         {slide ? (
