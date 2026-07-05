@@ -4,6 +4,7 @@ import { PageHeader } from "@/components/sections/PageHeader";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
+import { Reveal } from "@/components/ui/Reveal";
 import { buildMetadata } from "@/lib/seo";
 
 // Phase 2: live IDX search requires a Bright MLS-approved vendor + broker
@@ -30,6 +31,7 @@ export default function ListingsPage() {
 
       <Section tone="paper" spacing="md">
         <div className="mx-auto max-w-2xl">
+          <Reveal variant="scale">
           <Card tone="cream" padding="lg" className="flex flex-col items-center gap-5 text-center">
             <span className="grid h-14 w-14 place-items-center rounded-full bg-ink text-fg-inverse">
               <Icon name="home" className="h-7 w-7" />
@@ -44,6 +46,7 @@ export default function ListingsPage() {
               <Button href="/neighborhoods" variant="outline">Explore neighborhoods</Button>
             </div>
           </Card>
+          </Reveal>
         </div>
       </Section>
     </>

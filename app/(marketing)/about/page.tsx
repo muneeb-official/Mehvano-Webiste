@@ -8,6 +8,7 @@ import { Avatar } from "@/components/ui/Avatar";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { Badge } from "@/components/ui/Badge";
+import { Reveal } from "@/components/ui/Reveal";
 import { CTABand } from "@/components/sections/CTABand";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
@@ -56,7 +57,7 @@ export default function AboutPage() {
       {/* Bio + card */}
       <Section tone="paper" spacing="md">
         <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr] lg:items-start">
-          <div className="flex flex-col gap-5">
+          <Reveal variant="left" className="flex flex-col gap-5">
             <SectionHeading title="Local expertise you can actually search for" as="h2" />
             <p className="text-lg leading-relaxed text-fg-muted">{AGENT.bio}</p>
             <p className="text-[1.05rem] leading-relaxed text-fg-muted">
@@ -80,9 +81,10 @@ export default function AboutPage() {
               <Button href="/contact" icon="arrow-up-right">Book a call</Button>
               <Button href="/home-value" variant="outline">What&rsquo;s my home worth?</Button>
             </div>
-          </div>
+          </Reveal>
 
-          <Card tone="cream" padding="lg" className="flex flex-col items-center gap-5 text-center">
+          <Reveal variant="right" delay={120} className="h-full">
+          <Card tone="cream" padding="lg" className="flex h-full flex-col items-center gap-5 text-center">
             <Avatar name={AGENT.name} size={120} src={undefined} />
             <div>
               <p className="font-display text-xl font-bold text-fg">{AGENT.name}</p>
@@ -118,6 +120,7 @@ export default function AboutPage() {
               <Button href={AGENT.emailHref} variant="outline" className="w-full" icon="mail">Email me</Button>
             </div>
           </Card>
+          </Reveal>
         </div>
       </Section>
 

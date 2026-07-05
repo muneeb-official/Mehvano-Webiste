@@ -17,9 +17,9 @@ type ImagePlaceholderProps = {
 
 const gradients = [
   "from-graphite via-charcoal to-ink",
-  "from-[#5b4f3d] via-[#3c352b] to-[#211d17]",
-  "from-[#6b5a3f] via-[#4a4133] to-[#211d17]",
-  "from-[#3a4a4d] via-[#2b3335] to-[#16130e]",
+  "from-[#0e5a67] via-[#0a4650] to-[#06323b]",
+  "from-[#12626f] via-[#0b4a54] to-[#06323b]",
+  "from-[#0c525d] via-[#083f48] to-[#06323b]",
 ];
 
 /**
@@ -56,7 +56,7 @@ export function ImagePlaceholder({
       role="img"
       aria-label={alt}
     >
-      <div className="absolute inset-0 opacity-30 [background:radial-gradient(120%_80%_at_75%_20%,rgba(242,181,60,0.35),transparent_60%)]" />
+      <div className="absolute inset-0 opacity-30 [background:radial-gradient(120%_80%_at_75%_20%,rgba(216,196,161,0.35),transparent_60%)]" />
       <div className="relative flex flex-col items-center gap-2 text-center text-white/70">
         <Icon name={icon} className="h-8 w-8" />
         {label ? (

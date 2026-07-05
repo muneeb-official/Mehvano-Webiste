@@ -1,6 +1,7 @@
 import type { ElementType, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { Container } from "./Container";
+import { ScrollSlide } from "./ScrollSlide";
 
 type SectionProps = {
   children: ReactNode;
@@ -12,6 +13,12 @@ type SectionProps = {
   container?: false | "default" | "prose" | "wide";
   id?: string;
   as?: ElementType;
+  /**
+   * Scroll-scrubbed horizontal slide-in (alternating sides down the page).
+   * On by default; set false for long-read/sticky content that shouldn't move
+   * (e.g. article bodies).
+   */
+  slide?: boolean;
 };
 
 const tones = {
@@ -35,10 +42,12 @@ export function Section({
   container = "default",
   id,
   as: Tag = "section",
+  slide = true,
 }: SectionProps) {
+  const content = slide ? <ScrollSlide>{children}</ScrollSlide> : children;
   return (
     <Tag id={id} className={cn(tones[tone], spacings[spacing], className)}>
-      {container ? <Container size={container}>{children}</Container> : children}
+      {container ? <Container size={container}>{content}</Container> : content}
     </Tag>
   );
 }

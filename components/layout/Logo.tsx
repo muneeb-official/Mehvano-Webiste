@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { SITE } from "@/lib/constants";
 
@@ -8,42 +9,33 @@ type LogoProps = {
   href?: string;
 };
 
-/** Brand mark: a gold diamond spark + wordmark (mirrors the reference logo). */
+/** Brand mark: the Mehvano "M" logo + "ehvano" wordmark (reads "Mehvano"). */
 export function Logo({ tone = "default", className, href = "/" }: LogoProps) {
   return (
     <Link
       href={href}
-      className={cn("group inline-flex items-center gap-2.5 font-display", className)}
+      className={cn("group inline-flex items-center gap-1 font-display", className)}
       aria-label={`${SITE.brand} — home`}
     >
-      <span
-        className={cn(
-          "grid h-9 w-9 place-items-center rounded-xl transition-transform duration-300 group-hover:rotate-12",
-          tone === "inverse" ? "bg-paper text-ink" : "bg-ink text-paper"
-        )}
-      >
-        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden>
-          <path d="M12 2c.6 5 2 6.4 7 7-5 .6-6.4 2-7 7-.6-5-2-6.4-7-7 5-.6 6.4-2 7-7Z" />
-        </svg>
-      </span>
+      <Image
+        src="/Mehvano_logo.png"
+        alt="Mehvano"
+        width={483}
+        height={516}
+        priority
+        className="h-9 w-auto transition-transform duration-300 group-hover:scale-105"
+      />
       <span className="flex flex-col leading-none">
         <span
           className={cn(
-            "text-lg font-extrabold tracking-tight",
+            "-ml-0.5 text-lg font-extrabold tracking-tight",
             tone === "inverse" ? "text-fg-inverse" : "text-fg"
           )}
         >
-          {SITE.brandShort}
+          ehvano
           <span className="text-gold">.</span>
         </span>
-        <span
-          className={cn(
-            "text-[0.62rem] font-semibold uppercase tracking-[0.22em]",
-            tone === "inverse" ? "text-fg-inverse-muted" : "text-fg-subtle"
-          )}
-        >
-          Realty
-        </span>
+        
       </span>
     </Link>
   );

@@ -4,6 +4,7 @@ import { PageHeader } from "@/components/sections/PageHeader";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { Icon, type IconName } from "@/components/ui/Icon";
+import { Reveal } from "@/components/ui/Reveal";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
@@ -40,7 +41,7 @@ export default function ContactPage() {
       <Section tone="paper" spacing="md">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-start">
           {/* Contact details */}
-          <div className="flex flex-col gap-8">
+          <Reveal variant="left" className="flex flex-col gap-8">
             <SectionHeading eyebrow="Reach me directly" title="A real person, quick to respond" as="h2" />
             <div className="flex flex-col gap-4">
               <a href={AGENT.phoneHref} className="group flex items-center gap-4">
@@ -91,13 +92,13 @@ export default function ContactPage() {
                 ))}
               </div>
             </div>
-          </div>
+          </Reveal>
 
           {/* Form */}
-          <div className="rounded-3xl border border-line bg-cream p-6 sm:p-8">
+          <Reveal variant="right" delay={120} className="rounded-3xl border border-line bg-cream p-6 sm:p-8">
             <h2 className="mb-6 font-display text-2xl font-bold text-fg">Send a message</h2>
             <ContactForm />
-          </div>
+          </Reveal>
         </div>
       </Section>
 

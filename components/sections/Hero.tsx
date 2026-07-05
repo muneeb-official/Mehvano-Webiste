@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Avatar } from "@/components/ui/Avatar";
 import { Icon } from "@/components/ui/Icon";
+import { Reveal } from "@/components/ui/Reveal";
 import { AGENT, SERVICE_AREA } from "@/lib/constants";
 
 /**
@@ -13,7 +14,7 @@ import { AGENT, SERVICE_AREA } from "@/lib/constants";
  */
 export function Hero() {
   return (
-    <section className="relative isolate overflow-hidden rounded-b-[2rem] bg-ink sm:rounded-b-[3rem]">
+    <section className="relative isolate flex w-full items-center overflow-hidden rounded-b-[2rem] bg-ink sm:rounded-b-[3rem]">
       <Image
         src="/hero/hero-home.svg"
         alt="Modern home at dusk in Maryland"
@@ -23,37 +24,49 @@ export function Hero() {
       />
       <div className="hero-veil absolute inset-0 -z-10" />
 
-      <Container size="wide" className="pb-16 pt-28 sm:pt-32 lg:pb-24 lg:pt-40">
+      <Container size="wide" className="pb-16 pt-28 sm:pt-32 lg:py-24">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           {/* Left — headline + CTAs + stat */}
           <div className="max-w-xl">
-            <Eyebrow tone="inverse">
-              {SERVICE_AREA.counties.join(" · ")}, {SERVICE_AREA.state}
-            </Eyebrow>
+            <Reveal variant="up" delay={0}>
+              <Eyebrow tone="inverse">
+                {SERVICE_AREA.counties.join(" · ")}, {SERVICE_AREA.state}
+              </Eyebrow>
+            </Reveal>
 
-            <h1 className="mt-6 font-display text-4xl font-black uppercase leading-[0.95] tracking-tight text-white sm:text-6xl lg:text-[4.25rem]">
+            <Reveal
+              as="h1"
+              variant="up"
+              delay={90}
+              className="mt-6 font-display text-4xl font-black uppercase leading-[0.95] tracking-tight text-white sm:text-6xl lg:text-[4.25rem]"
+            >
               Find your next
               <br />
               home in <span className="text-gradient-gold">Maryland</span>
-            </h1>
+            </Reveal>
 
-            <p className="mt-6 max-w-md text-base leading-relaxed text-white/75 sm:text-lg">
+            <Reveal
+              as="p"
+              variant="up"
+              delay={180}
+              className="mt-6 max-w-md text-base leading-relaxed text-white/75 sm:text-lg"
+            >
               Buy with confidence, sell for more, and get straight answers about
               Severn, Pasadena, and Ellicott City — from a local REALTOR® who
               knows these neighborhoods block by block.
-            </p>
+            </Reveal>
 
-            <div className="mt-9 flex flex-wrap items-center gap-3">
+            <Reveal variant="up" delay={270} className="mt-9 flex flex-wrap items-center gap-3">
               <Button href="/home-value" variant="light" size="lg" icon="arrow-up-right" iconCircle>
                 What&rsquo;s My Home Worth?
               </Button>
               <Button href="/neighborhoods" variant="glass" size="lg">
                 Explore Neighborhoods
               </Button>
-            </div>
+            </Reveal>
 
             {/* Stat chip (mirrors the "12.8K+" card) */}
-            <div className="glass mt-10 inline-flex items-center gap-4 rounded-2xl p-3 pr-6">
+            <Reveal variant="up" delay={360} className="glass mt-10 inline-flex items-center gap-4 rounded-2xl p-3 pr-6">
               <span className="grid h-14 w-14 shrink-0 place-items-center rounded-xl bg-gold-bright text-ink">
                 <Icon name="map-pin" className="h-6 w-6" />
               </span>
@@ -61,11 +74,11 @@ export function Hero() {
                 <span className="font-display text-2xl font-extrabold text-white">4 ZIP codes</span>
                 <span className="text-sm text-white/70">Hyperlocal expertise you can search</span>
               </span>
-            </div>
+            </Reveal>
           </div>
 
           {/* Right — featured guide card */}
-          <div className="relative lg:justify-self-end">
+          <Reveal variant="right" delay={240} className="relative lg:justify-self-end">
             <div className="glass w-full max-w-md rounded-3xl p-3 shadow-glass">
               <div className="relative overflow-hidden rounded-2xl">
                 <Image
@@ -105,7 +118,7 @@ export function Hero() {
                 </Link>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </Container>
     </section>

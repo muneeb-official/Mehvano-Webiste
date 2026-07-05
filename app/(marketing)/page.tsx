@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { Hero } from "@/components/sections/Hero";
-import { TrustBar } from "@/components/sections/TrustBar";
+import { PanelDeck } from "@/components/ui/PanelDeck";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
+import { Reveal } from "@/components/ui/Reveal";
 import { ZipGrid } from "@/components/sections/ZipGrid";
 import { FeatureGrid, type Feature } from "@/components/sections/FeatureGrid";
 import { Steps, type Step } from "@/components/sections/Steps";
@@ -67,19 +68,21 @@ export default function HomePage() {
   const featured = getAllArticles().slice(0, 3);
 
   return (
-    <>
-      <Hero />
-      <TrustBar />
+    <PanelDeck
+      panels={[
+        /* Panel 0 — pinned hero base */
+        <Hero key="hero" />,
 
-      {/* Buyers / Sellers split */}
-      <Section tone="cream" spacing="md">
+      /* Buyers / Sellers split */
+      <Section key="split" tone="cream" spacing="md" slide={false}>
         <SectionHeading
           eyebrow="Two ways I help"
           title="Whether you're buying or selling, you get a real plan"
           description="Post-2024, the agents who win are the ones who can explain their value clearly. Here's exactly what you get on each side of the deal."
         />
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
-          <Card tone="paper" padding="lg" className="flex flex-col gap-5">
+          <Reveal variant="left" className="h-full">
+          <Card tone="paper" padding="lg" className="flex h-full flex-col gap-5">
             <span className="grid h-12 w-12 place-items-center rounded-xl bg-ink text-fg-inverse">
               <Icon name="home" className="h-6 w-6" />
             </span>
@@ -101,8 +104,10 @@ export default function HomePage() {
               First-time buyer guide
             </Button>
           </Card>
+          </Reveal>
 
-          <Card tone="ink" padding="lg" className="flex flex-col gap-5">
+          <Reveal variant="right" delay={130} className="h-full">
+          <Card tone="ink" padding="lg" className="flex h-full flex-col gap-5">
             <span className="grid h-12 w-12 place-items-center rounded-xl bg-gold-bright text-ink">
               <Icon name="chart" className="h-6 w-6" />
             </span>
@@ -124,11 +129,12 @@ export default function HomePage() {
               What&rsquo;s my home worth?
             </Button>
           </Card>
+          </Reveal>
         </div>
-      </Section>
+      </Section>,
 
-      {/* Seller funnel — zip grid */}
-      <Section tone="paper" spacing="md">
+      /* Seller funnel — zip grid */
+      <Section key="valuation" tone="paper" spacing="md" slide={false}>
         <SectionHeading
           eyebrow="Free home valuation"
           title="What's your home worth in 2026?"
@@ -143,10 +149,10 @@ export default function HomePage() {
             Request a valuation anywhere in Anne Arundel or Howard County →
           </Link>
         </p>
-      </Section>
+      </Section>,
 
-      {/* Why Mehvano */}
-      <Section tone="cream" spacing="md">
+      /* Why Mehvano */
+      <Section key="why" tone="cream" spacing="md" slide={false}>
         <SectionHeading
           eyebrow="Why work with me"
           title="Local expertise, modern marketing, zero pressure"
@@ -155,10 +161,10 @@ export default function HomePage() {
         <div className="mt-12">
           <FeatureGrid items={FEATURES} columns={4} />
         </div>
-      </Section>
+      </Section>,
 
-      {/* Process */}
-      <Section tone="paper" spacing="md">
+      /* Process */
+      <Section key="process" tone="paper" spacing="md" slide={false}>
         <SectionHeading
           eyebrow="How it works"
           title="A simple path from hello to keys"
@@ -167,10 +173,10 @@ export default function HomePage() {
         <div className="mt-12">
           <Steps steps={STEPS} />
         </div>
-      </Section>
+      </Section>,
 
-      {/* Featured content */}
-      <Section tone="cream" spacing="md">
+      /* Featured content */
+      <Section key="featured" tone="cream" spacing="md" slide={false}>
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
             eyebrow="Local intel"
@@ -187,10 +193,10 @@ export default function HomePage() {
             <ArticleCard key={article.slug} article={article} index={i} />
           ))}
         </div>
-      </Section>
+      </Section>,
 
-      {/* Testimonials */}
-      <Section tone="paper" spacing="md">
+      /* Testimonials */
+      <Section key="testimonials" tone="paper" spacing="md" slide={false}>
         <SectionHeading
           eyebrow="Client stories"
           title="What it's like to work together"
@@ -199,9 +205,10 @@ export default function HomePage() {
         <div className="mt-12">
           <Testimonials items={TESTIMONIALS} />
         </div>
-      </Section>
+      </Section>,
 
-      <CTABand />
-    </>
+      <CTABand key="cta" slide={false} />,
+      ]}
+    />
   );
 }

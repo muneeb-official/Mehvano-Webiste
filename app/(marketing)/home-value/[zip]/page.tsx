@@ -8,6 +8,7 @@ import { ArticleCard } from "@/components/sections/ArticleCard";
 import { HomeValueForm } from "@/components/forms/HomeValueForm";
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
+import { Reveal } from "@/components/ui/Reveal";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
@@ -54,7 +55,7 @@ export default async function ZipHomeValuePage({ params }: Params) {
 
       <Section tone="paper" spacing="md">
         <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-start">
-          <div>
+          <Reveal variant="left">
             <SectionHeading
               eyebrow="Start here"
               title={`Get your ${zip.zip} valuation`}
@@ -72,10 +73,10 @@ export default async function ZipHomeValuePage({ params }: Params) {
                 </li>
               ))}
             </ul>
-          </div>
-          <div className="rounded-3xl border border-line bg-cream p-6 sm:p-8">
+          </Reveal>
+          <Reveal variant="right" delay={120} className="rounded-3xl border border-line bg-cream p-6 sm:p-8">
             <HomeValueForm context={zip.slug} />
-          </div>
+          </Reveal>
         </div>
       </Section>
 
@@ -95,7 +96,7 @@ export default async function ZipHomeValuePage({ params }: Params) {
       ) : null}
 
       <Section tone="paper" spacing="sm">
-        <div className="flex flex-wrap items-center justify-between gap-6 rounded-3xl border border-line bg-cream p-8">
+        <Reveal variant="scale" className="flex flex-wrap items-center justify-between gap-6 rounded-3xl border border-line bg-cream p-8">
           <div>
             <h2 className="font-display text-2xl font-bold text-fg">Thinking about buying in {zip.city} instead?</h2>
             <p className="mt-2 text-fg-muted">I can help with that too — let&rsquo;s talk about your options.</p>
@@ -104,7 +105,7 @@ export default async function ZipHomeValuePage({ params }: Params) {
             <Button href="/contact" icon="arrow-up-right">Book a call</Button>
             <Button href="/neighborhoods" variant="outline">Browse neighborhoods</Button>
           </div>
-        </div>
+        </Reveal>
       </Section>
 
       <Section tone="cream" spacing="sm">

@@ -21,30 +21,32 @@
   --font-display: var(--font-archivo), "Archivo", system-ui, sans-serif;
   --font-body: var(--font-inter), "Inter", system-ui, sans-serif;
 
-  /* ---- Brand neutrals (warm) -------------------------------------------- */
+  /* ---- Brand neutrals (teal darks + cool light surfaces) ---------------- */
+  /* Token names are legacy ("cream", "sand", "gold") but values are the
+     teal + warm-neutral palette. Edit here to retint the whole site. */
   --color-paper: #ffffff;
-  --color-cream: #f6f3ec;
-  --color-sand: #efe9dd;
-  --color-sand-deep: #e4ddcd;
-  --color-ink: #16130e;
-  --color-charcoal: #201c16;
-  --color-graphite: #34302a;
+  --color-cream: #f2f2f2;
+  --color-sand: #e8e6e2;
+  --color-sand-deep: #dbd8d2;
+  --color-ink: #06323b;
+  --color-charcoal: #0a4650;
+  --color-graphite: #0d5560;
 
-  /* ---- Accent (gold) ---------------------------------------------------- */
-  --color-gold: #cf9226;
-  --color-gold-bright: #f2b53c;
-  --color-gold-deep: #a9741a;
+  /* ---- Accent (tan) — split into readable light/dark tints -------------- */
+  --color-gold: #a69076;        /* base tan: fills, icons, dots           */
+  --color-gold-bright: #d8c4a1; /* light tan: readable text on dark teal  */
+  --color-gold-deep: #6e5b3c;   /* dark tan: readable text on light        */
 
   /* ---- Foreground / text ------------------------------------------------ */
-  --color-fg: #1a1712;
-  --color-fg-muted: #6b6357;
-  --color-fg-subtle: #948a7c;
-  --color-fg-inverse: #f7f4ee;
-  --color-fg-inverse-muted: #c7bfb2;
+  --color-fg: #0e2a2d;
+  --color-fg-muted: #566461;
+  --color-fg-subtle: #6f7873;
+  --color-fg-inverse: #f2f2f2;
+  --color-fg-inverse-muted: #b9c2bf;
 
   /* ---- Lines / borders -------------------------------------------------- */
-  --color-line: #e6dfd1;
-  --color-line-strong: #d4cab8;
+  --color-line: #dedcd6;
+  --color-line-strong: #cbc9c2;
 
   /* ---- Feedback --------------------------------------------------------- */
   --color-success: #2f7d5b;
@@ -91,6 +93,9 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    /* `clip` (not `hidden`) keeps slide-in reveals from spawning a horizontal
+       scrollbar while still allowing position: sticky to work. */
+    overflow-x: clip;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -135,25 +140,26 @@
   }
 
   .glass-dark {
-    background: rgba(22, 19, 14, 0.55);
+    background: rgba(6, 50, 59, 0.55);
     backdrop-filter: blur(18px) saturate(140%);
     -webkit-backdrop-filter: blur(18px) saturate(140%);
     border: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  /* Gradient wash for the dark hero shell */
+  /* Gradient wash for the dark hero shell (teal) */
   .hero-veil {
     background: linear-gradient(
       104deg,
-      rgba(16, 14, 10, 0.92) 0%,
-      rgba(20, 17, 12, 0.72) 34%,
-      rgba(24, 20, 14, 0.4) 62%,
-      rgba(28, 23, 16, 0.55) 100%
+      rgba(6, 50, 59, 0.92) 0%,
+      rgba(7, 58, 64, 0.72) 34%,
+      rgba(13, 85, 96, 0.4) 62%,
+      rgba(6, 50, 59, 0.6) 100%
     );
   }
 
+  /* Bright→base tan so BOTH gradient stops stay readable on the dark hero. */
   .text-gradient-gold {
-    background: linear-gradient(96deg, var(--color-gold-bright), var(--color-gold-deep));
+    background: linear-gradient(96deg, var(--color-gold-bright), var(--color-gold));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -175,6 +181,50 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ *  Scroll-slide sections
+ *  <ScrollSlide> (components/ui/ScrollSlide.tsx, applied via Section.tsx) ties
+ *  each section's horizontal position to scroll progress in JS. No CSS start
+ *  state is needed — with JS off, sections simply render centred/visible.
+ * ------------------------------------------------------------------------- */
+
+/* ---------------------------------------------------------------------------
+ *  Panel deck (homepage pinned-panel slideshow — components/ui/PanelDeck.tsx)
+ *  Only turns on for JS + desktop + no reduced-motion. Otherwise the panels
+ *  fall back to a normal vertical stack (mobile / no-JS / reduced-motion),
+ *  which keeps content fully visible and accessible.
+ * ------------------------------------------------------------------------- */
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .js .panel-deck {
+    position: relative;
+    height: calc(var(--deck-count, 1) * 100svh);
+  }
+  .js .panel-deck-viewport {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    overflow: hidden;
+  }
+  .js .panel-deck-panel {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    overflow: hidden;
+    /* initial (pre-JS) offset so only the hero shows before the script runs;
+       JS then drives the transform on scroll. */
+    transform: translateX(calc(var(--dir, 0) * 100%));
+    will-change: transform;
+  }
+  /* Make each panel's content fill the screen (bg included) and centre. */
+  .js .panel-deck-panel > * {
+    flex: 1;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
 

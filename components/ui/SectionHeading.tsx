@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { Eyebrow } from "./Eyebrow";
+import { Reveal } from "./Reveal";
 
 type SectionHeadingProps = {
   eyebrow?: ReactNode;
@@ -23,7 +24,9 @@ export function SectionHeading({
   as: Tag = "h2",
 }: SectionHeadingProps) {
   return (
-    <div
+    <Reveal
+      as="div"
+      variant="up"
       className={cn(
         "flex flex-col gap-4",
         align === "center" && "items-center text-center",
@@ -50,6 +53,6 @@ export function SectionHeading({
           {description}
         </p>
       ) : null}
-    </div>
+    </Reveal>
   );
 }

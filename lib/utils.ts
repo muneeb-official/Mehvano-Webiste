@@ -3,6 +3,15 @@ export function cn(...classes: Array<string | false | null | undefined>): string
   return classes.filter(Boolean).join(" ");
 }
 
+/**
+ * Stagger delay (ms) for a cascading list — feed `index` and get an increasing
+ * delay, capped so long lists don't build up a huge lag before the last item.
+ * Used with <Reveal delay={stagger(i)} /> to make grids reveal one-by-one.
+ */
+export function stagger(index: number, step = 90, cap = 6): number {
+  return Math.min(index, cap) * step;
+}
+
 /** Format an ISO date (YYYY-MM-DD) as e.g. "June 2026". */
 export function formatMonthYear(iso: string): string {
   const [y, m] = iso.split("-").map(Number);

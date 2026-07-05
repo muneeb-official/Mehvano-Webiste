@@ -8,6 +8,7 @@ import { FeatureGrid, type Feature } from "@/components/sections/FeatureGrid";
 import { FaqList } from "@/components/sections/ArticleBody";
 import { HomeValueForm } from "@/components/forms/HomeValueForm";
 import { Icon } from "@/components/ui/Icon";
+import { Reveal } from "@/components/ui/Reveal";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
@@ -71,7 +72,7 @@ export default function HomeValuePage() {
       {/* Form + reasons */}
       <Section tone="paper" spacing="md">
         <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-start">
-          <div>
+          <Reveal variant="left">
             <SectionHeading
               eyebrow="Start here"
               title="Request your valuation"
@@ -85,10 +86,10 @@ export default function HomeValuePage() {
                 </span>
               ))}
             </div>
-          </div>
-          <div className="rounded-3xl border border-line bg-cream p-6 sm:p-8">
+          </Reveal>
+          <Reveal variant="right" delay={120} className="rounded-3xl border border-line bg-cream p-6 sm:p-8">
             <HomeValueForm />
-          </div>
+          </Reveal>
         </div>
       </Section>
 
