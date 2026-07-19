@@ -16,8 +16,8 @@ export default function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: 72,
-          background: "linear-gradient(135deg, #06323b 0%, #073a40 55%, #0d5560 100%)",
-          color: "#f2f2f2",
+          background: "linear-gradient(135deg, #1c1c1b 0%, #2a2723 55%, #3a342c 100%)",
+          color: "#ecebe7",
           fontFamily: "sans-serif",
         }}
       >
@@ -27,7 +27,7 @@ export default function OpengraphImage() {
               width: 56,
               height: 56,
               borderRadius: 16,
-              background: "#d8c4a1",
+              background: "#b7ac9b",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -38,23 +38,23 @@ export default function OpengraphImage() {
                 width: 22,
                 height: 22,
                 borderRadius: 5,
-                background: "#06323b",
+                background: "#1c1c1b",
                 transform: "rotate(45deg)",
               }}
             />
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <span style={{ fontSize: 30, fontWeight: 800, letterSpacing: -1 }}>
-              {SITE.brandShort} <span style={{ color: "#d8c4a1" }}>.</span>
+              {SITE.brandShort} <span style={{ color: "#b7ac9b" }}>.</span>
             </span>
-            <span style={{ fontSize: 15, letterSpacing: 4, color: "#b9c2bf", textTransform: "uppercase" }}>
+            <span style={{ fontSize: 15, letterSpacing: 4, color: "#ada79c", textTransform: "uppercase" }}>
               Realty
             </span>
           </div>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <span style={{ fontSize: 20, letterSpacing: 3, color: "#d8c4a1", textTransform: "uppercase" }}>
+          <span style={{ fontSize: 20, letterSpacing: 3, color: "#b7ac9b", textTransform: "uppercase" }}>
             Anne Arundel & Howard County, MD
           </span>
           <span
@@ -73,10 +73,10 @@ export default function OpengraphImage() {
         </div>
 
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
-          <span style={{ fontSize: 26, color: "#b9c2bf" }}>
+          <span style={{ fontSize: 26, color: "#ada79c" }}>
             Mehvish Aslam · REALTOR®
           </span>
-          <span style={{ fontSize: 24, color: "#d8c4a1" }}>homesbymehvish.com</span>
+          <span style={{ fontSize: 24, color: "#b7ac9b" }}>homesbymehvish.com</span>
         </div>
       </div>
     ),

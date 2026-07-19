@@ -19,8 +19,9 @@ export function Header({ overHero }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
-  // Only the homepage has a dark hero for the bar to float over.
-  const floatsOverHero = overHero ?? pathname === "/";
+  // The homepage and portfolio page both open on a dark, full-bleed hero for
+  // the bar to float over transparently.
+  const floatsOverHero = overHero ?? (pathname === "/" || pathname === "/portfolio");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);

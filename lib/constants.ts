@@ -73,6 +73,7 @@ export const NAV_LINKS = [
   { label: "Neighborhoods", href: "/neighborhoods" },
   { label: "Market Reports", href: "/market-reports" },
   { label: "Guides", href: "/guides" },
+  { label: "Portfolio", href: "/portfolio" },
   { label: "About", href: "/about" },
 ] as const;
 
@@ -96,6 +97,7 @@ export const FOOTER_NAV = [
     title: "Company",
     links: [
       { label: "About Mehvish", href: "/about" },
+      { label: "Portfolio", href: "/portfolio" },
       { label: "Contact", href: "/contact" },
     ],
   },
