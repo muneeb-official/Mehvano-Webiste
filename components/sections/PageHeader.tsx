@@ -21,7 +21,7 @@ export function PageHeader({ eyebrow, title, description, crumbs, align = "left"
         {crumbs ? <Breadcrumbs items={crumbs} className="mb-6" /> : null}
         <Reveal variant="up" className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
           {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
-          <h1 className="mt-4 font-display text-4xl font-black uppercase tracking-tight text-fg sm:text-5xl">
+          <h1 className="mt-4 font-display text-4xl font-semibold tracking-tight text-fg sm:text-5xl">
             {title}
           </h1>
           {description ? (

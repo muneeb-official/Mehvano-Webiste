@@ -1,66 +1,36 @@
-import Link from "next/link";
 import { Hero } from "@/components/sections/Hero";
-import { PanelDeck } from "@/components/ui/PanelDeck";
+import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Card } from "@/components/ui/Card";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Button } from "@/components/ui/Button";
-import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
-import { ZipGrid } from "@/components/sections/ZipGrid";
-import { FeatureGrid, type Feature } from "@/components/sections/FeatureGrid";
-import { Steps, type Step } from "@/components/sections/Steps";
-import { ArticleCard } from "@/components/sections/ArticleCard";
+import { ServiceGrid } from "@/components/sections/ServiceGrid";
+import { ServiceOrbit } from "@/components/sections/ServiceOrbit";
+import { StatMesh } from "@/components/sections/StatMesh";
+import { StatTrio } from "@/components/sections/StatTrio";
+import { WhyChoose } from "@/components/sections/WhyChoose";
+import { InsightsGrid } from "@/components/sections/InsightsGrid";
 import { Testimonials, type Testimonial } from "@/components/sections/Testimonials";
 import { CTABand } from "@/components/sections/CTABand";
 import { getAllArticles } from "@/lib/cms";
 
-const FEATURES: Feature[] = [
-  {
-    icon: "map-pin",
-    title: "Genuinely hyperlocal",
-    text: "Not a generic 'two-county agent.' I know Severn, Pasadena, and Ellicott City block by block — schools, commutes, and what actually sells.",
-  },
-  {
-    icon: "clock",
-    title: "Fast, human responses",
-    text: "You hear back in minutes, not days. Speed matters in a low-inventory market, and you'll always talk to me — not a call center.",
-  },
-  {
-    icon: "chart",
-    title: "Priced with real data",
-    text: "Every valuation is built from current, comparable sales and reviewed by a human — no automated guesswork that misses your home's story.",
-  },
-  {
-    icon: "shield",
-    title: "Clear from day one",
-    text: "A written plan and value proposition up front, so you always know the strategy, the timeline, and exactly how I'm compensated.",
-  },
-];
-
-const STEPS: Step[] = [
-  { title: "Talk it through", text: "A no-pressure call to understand your goals, timeline, and budget — buying, selling, or both." },
-  { title: "Build the plan", text: "A clear, written strategy: pricing, prep, search criteria, and how we'll move faster than the market." },
-  { title: "Make the move", text: "Tour, offer, negotiate, and manage inspections and closing — I handle the details and keep you informed." },
-  { title: "Stay in touch", text: "After closing you get ongoing market check-ins and a home-value watch, so your biggest asset is never a mystery." },
-];
-
-// NOTE: placeholder testimonials — replace with real, verifiable Google reviews (report §9.3).
+// NOTE: placeholder testimonials — replace with real, verifiable reviews before launch.
 const TESTIMONIALS: Testimonial[] = [
   {
-    quote: "She knew Severn inside out and got us into the right neighborhood for our Fort Meade commute. Every question got a same-day answer.",
-    name: "The R. Family",
-    detail: "Buyers · Severn, MD",
+    quote: "We needed nursing coverage fast and a new website in the same month. Mehvano handled both — one call, two teams, zero stress.",
+    name: "Sarah L.",
+    detail: "Clinic administrator · Anne Arundel County, MD",
   },
   {
-    quote: "We listed in Ellicott City and had strong offers within the first week. The pricing strategy was spot on.",
+    quote: "Their AI chatbot now answers 70% of our customer questions automatically. It paid for itself in the first quarter.",
     name: "Daniel & Priya",
-    detail: "Sellers · Ellicott City, MD",
+    detail: "Small business owners · Ellicott City, MD",
   },
   {
-    quote: "First-time buyers and honestly nervous — she made the whole process feel simple and never once pushed us.",
+    quote: "They helped us form our LLC, set up the books, and then sold our old office building. A genuine one-stop shop.",
     name: "Marcus T.",
-    detail: "First-time buyer · Pasadena, MD",
+    detail: "Founder · Pasadena, MD",
   },
 ];
 
@@ -68,147 +38,117 @@ export default function HomePage() {
   const featured = getAllArticles().slice(0, 3);
 
   return (
-    <PanelDeck
-      panels={[
-        /* Panel 0 — pinned hero base */
-        <Hero key="hero" />,
+    <>
+      <Hero />
 
-      /* Buyers / Sellers split */
-      <Section key="split" tone="cream" spacing="md" slide={false}>
-        <SectionHeading
-          eyebrow="Two ways I help"
-          title="Whether you're buying or selling, you get a real plan"
-          description="Post-2024, the agents who win are the ones who can explain their value clearly. Here's exactly what you get on each side of the deal."
-        />
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
-          <Reveal variant="left" className="h-full">
-          <Card tone="paper" padding="lg" className="flex h-full flex-col gap-5">
-            <span className="grid h-12 w-12 place-items-center rounded-xl bg-ink text-fg-inverse">
-              <Icon name="home" className="h-6 w-6" />
-            </span>
-            <h3 className="font-display text-2xl font-bold text-fg">Buying a home</h3>
-            <ul className="flex flex-col gap-3 text-sm text-fg-muted">
-              {[
-                "New listings matched to your search the moment they hit the market",
-                "In-person or video tours — ideal if you're relocating on a timeline",
-                "Offers priced to the comps and structured to compete, not overpay",
-                "Inspection, appraisal, and closing handled end to end",
-              ].map((item) => (
-                <li key={item} className="flex gap-3">
-                  <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-gold-deep" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <Button href="/guides/first-time-home-buyer-severn-md" variant="outline" className="mt-auto self-start">
-              First-time buyer guide
-            </Button>
-          </Card>
+      {/* About — Driven by Innovation. Powered by People. + stat trio */}
+      <Section tone="paper" spacing="md" slide={false}>
+        <div className="grid items-center gap-12 lg:grid-cols-2">
+          <Reveal variant="left" className="flex flex-col gap-5">
+            <Eyebrow>About us</Eyebrow>
+            <h2 className="font-display text-3xl font-semibold tracking-tight text-fg sm:text-4xl lg:text-[2.75rem]">
+              Driven by service.
+              <br />
+              Powered by people.
+            </h2>
+            <p className="max-w-xl text-base leading-relaxed text-fg-muted sm:text-lg">
+              Mehvano LLC brings healthcare, technology, real estate, and business
+              services together under one trusted, Maryland-registered roof. With
+              licensed specialists in every field, we help families and businesses
+              adapt, scale, and thrive — without juggling a dozen vendors.
+            </p>
+            <div>
+              <Button href="/about" variant="outline">Learn more</Button>
+            </div>
           </Reveal>
 
-          <Reveal variant="right" delay={130} className="h-full">
-          <Card tone="ink" padding="lg" className="flex h-full flex-col gap-5">
-            <span className="grid h-12 w-12 place-items-center rounded-xl bg-gold-bright text-ink">
-              <Icon name="chart" className="h-6 w-6" />
-            </span>
-            <h3 className="font-display text-2xl font-bold text-white">Selling a home</h3>
-            <ul className="flex flex-col gap-3 text-sm text-white/75">
-              {[
-                "A real valuation from current comps — reviewed by a human, not a bot",
-                "A pricing and prep plan that captures the crucial first-two-weeks surge",
-                "Modern marketing that gets your home found by real, ready buyers",
-                "Monthly value updates long before you're ready to list",
-              ].map((item) => (
-                <li key={item} className="flex gap-3">
-                  <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-gold-bright" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <Button href="/home-value" variant="light" className="mt-auto self-start" icon="arrow-up-right">
-              What&rsquo;s my home worth?
-            </Button>
-          </Card>
+          <Reveal variant="right" delay={120} className="relative">
+            <ServiceOrbit />
           </Reveal>
         </div>
-      </Section>,
 
-      /* Seller funnel — zip grid */
-      <Section key="valuation" tone="paper" spacing="md" slide={false}>
-        <SectionHeading
-          eyebrow="Free home valuation"
-          title="What's your home worth in 2026?"
-          description="Get a real, human-reviewed estimate for your neighborhood — not a generic online guess. Pick your area to start."
-        />
-        <div className="mt-12">
-          <ZipGrid />
+        {/* Stat trio */}
+        <div className="mt-16 border-t border-line pt-12">
+          <StatTrio />
         </div>
-        <p className="mt-6 text-sm text-fg-muted">
-          Not one of these zips?{" "}
-          <Link href="/home-value" className="font-medium text-gold-deep underline underline-offset-4">
-            Request a valuation anywhere in Anne Arundel or Howard County →
-          </Link>
-        </p>
-      </Section>,
+      </Section>
 
-      /* Why Mehvano */
-      <Section key="why" tone="cream" spacing="md" slide={false}>
-        <SectionHeading
-          eyebrow="Why work with me"
-          title="Local expertise, modern marketing, zero pressure"
-          description="The middle of the market is crowded. Here's what makes working together different."
-        />
-        <div className="mt-12">
-          <FeatureGrid items={FEATURES} columns={4} />
-        </div>
-      </Section>,
-
-      /* Process */
-      <Section key="process" tone="paper" spacing="md" slide={false}>
-        <SectionHeading
-          eyebrow="How it works"
-          title="A simple path from hello to keys"
-          description="No jargon, no surprises — just a clear process that keeps you informed at every step."
-        />
-        <div className="mt-12">
-          <Steps steps={STEPS} />
-        </div>
-      </Section>,
-
-      /* Featured content */
-      <Section key="featured" tone="cream" spacing="md" slide={false}>
+      {/* Services — Solutions Built to Accelerate Your Growth */}
+      <Section id="services" tone="cream" spacing="md" slide={false}>
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
-            eyebrow="Local intel"
-            title="Answers to what buyers & sellers actually ask"
-            description="Real, hyperlocal guides and market reads for the neighborhoods I serve."
+            eyebrow="Services"
+            title="Solutions built to accelerate your growth"
+            description="From bedside care to code, from your next home to your next hire — expert teams that work the way you need them to."
             className="max-w-2xl"
           />
-          <Button href="/guides" variant="outline">
-            Browse all guides
-          </Button>
+          <Button href="/services" variant="outline">See all services</Button>
         </div>
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {featured.map((article, i) => (
-            <ArticleCard key={article.slug} article={article} index={i} />
-          ))}
+        <div className="mt-12">
+          <ServiceGrid columns={3} />
         </div>
-      </Section>,
+      </Section>
 
-      /* Testimonials */
-      <Section key="testimonials" tone="paper" spacing="md" slide={false}>
+      {/* Why choose us — accordion + image */}
+      <Section tone="paper" spacing="md" slide={false}>
+        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+          <Reveal variant="left" className="order-2 lg:order-1">
+            <StatMesh />
+          </Reveal>
+          <div className="order-1 flex flex-col gap-6 lg:order-2">
+            <SectionHeading
+              eyebrow="Why choose us"
+              title="Built on trust, driven by results"
+              className="max-w-xl"
+            />
+            <WhyChoose />
+          </div>
+        </div>
+      </Section>
+
+      {/* Testimonials */}
+      <Section tone="paper" spacing="md" slide={false}>
         <SectionHeading
-          eyebrow="Client stories"
-          title="What it's like to work together"
-          align="center"
+          eyebrow="Testimonials"
+          title="Reviews that speak volumes"
+          description="Hear how our services have transformed operations, improved outcomes, and driven growth."
         />
         <div className="mt-12">
           <Testimonials items={TESTIMONIALS} />
         </div>
-      </Section>,
+      </Section>
 
-      <CTABand key="cta" slide={false} />,
-      ]}
-    />
+      {/* Insights & Updates */}
+      <Section tone="cream" spacing="md" slide={false}>
+        <div className="flex flex-col items-center text-center">
+          <SectionHeading
+            eyebrow="Blog"
+            title="Insights & updates"
+            description="Expert articles, case studies, and hyperlocal intel to help you make smarter decisions."
+            align="center"
+          />
+        </div>
+        <div className="mt-12">
+          <InsightsGrid articles={featured} />
+        </div>
+        <div className="mt-10 flex justify-center">
+          <Button href="/guides" variant="outline">View all</Button>
+        </div>
+      </Section>
+
+      {/* CTA showcase band */}
+      <Container size="wide" className="pb-16 pt-4 sm:pb-24">
+        <div className="overflow-hidden rounded-[2rem] sm:rounded-[2.5rem]">
+          <CTABand
+            slide={false}
+            eyebrow="Work with us"
+            title="Ready to take your business or family to the next level?"
+            text="With licensed specialists across healthcare, AI, real estate, and business services, we help you adapt, scale, and thrive. Tell us what you need — we'll point you to the right team."
+            primary={{ label: "Get a Free Consultation", href: "/contact" }}
+            secondary={{ label: "Explore Services", href: "/services" }}
+          />
+        </div>
+      </Container>
+    </>
   );
 }

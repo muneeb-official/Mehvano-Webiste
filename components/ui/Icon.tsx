@@ -24,7 +24,20 @@ export type IconName =
   | "instagram"
   | "facebook"
   | "linkedin"
-  | "quote";
+  | "quote"
+  // Service icons
+  | "heart-pulse"
+  | "stethoscope"
+  | "cpu"
+  | "code"
+  | "briefcase"
+  | "users"
+  | "layers"
+  | "megaphone"
+  | "sparkles"
+  | "building"
+  | "wrench"
+  | "globe";
 
 const paths: Record<IconName, React.ReactNode> = {
   "arrow-up-right": <path d="M7 17 17 7M9 7h8v8" />,
@@ -79,6 +92,64 @@ const paths: Record<IconName, React.ReactNode> = {
     </>
   ),
   quote: <path d="M9 7H5v5h3v5H4M19 7h-4v5h3v5h-4" />,
+  "heart-pulse": (
+    <>
+      <path d="M12 20s-7-4.35-9.5-8.5C.9 8.8 2.2 5.5 5.3 5.1 7 4.9 8.6 5.8 9.4 7.2 10.2 5.8 11.8 4.9 13.5 5.1c3.1.4 4.4 3.7 2.8 6.4-.5.8-1.2 1.6-2 2.4" />
+      <path d="M2.8 12.5h3l1.5-3 2.2 5 1.6-3.5 1 1.5h3.1" />
+    </>
+  ),
+  stethoscope: (
+    <>
+      <path d="M5 3v5a4 4 0 0 0 8 0V3" />
+      <path d="M9 15a5 5 0 0 0 5 5 4 4 0 0 0 4-4v-2" />
+      <circle cx="18" cy="10" r="2.5" />
+    </>
+  ),
+  cpu: (
+    <>
+      <rect x="7" y="7" width="10" height="10" rx="2" />
+      <path d="M10 2v3M14 2v3M10 19v3M14 19v3M2 10h3M2 14h3M19 10h3M19 14h3" />
+    </>
+  ),
+  code: <path d="m9 8-5 4 5 4M15 8l5 4-5 4M13 5l-2 14" />,
+  briefcase: (
+    <>
+      <rect x="3" y="7" width="18" height="13" rx="2" />
+      <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18" />
+    </>
+  ),
+  users: (
+    <>
+      <circle cx="9" cy="8" r="3.2" />
+      <path d="M3.5 20a5.5 5.5 0 0 1 11 0M16 5.2a3.2 3.2 0 0 1 0 5.6M17.5 20a5.5 5.5 0 0 0-3-4.9" />
+    </>
+  ),
+  layers: <path d="m12 3 9 5-9 5-9-5 9-5ZM3 13l9 5 9-5M3 17l9 5 9-5" />,
+  megaphone: (
+    <>
+      <path d="M3 11v2a1 1 0 0 0 1 1h2l9 5V5L6 10H4a1 1 0 0 0-1 1Z" />
+      <path d="M15 8a4 4 0 0 1 0 8M7 14v4" />
+    </>
+  ),
+  sparkles: (
+    <>
+      <path d="M12 3c.4 3.6 1.4 4.6 5 5-3.6.4-4.6 1.4-5 5-.4-3.6-1.4-4.6-5-5 3.6-.4 4.6-1.4 5-5Z" />
+      <path d="M19 14c.2 1.5.6 1.9 2 2.1-1.4.2-1.8.6-2 2.1-.2-1.5-.6-1.9-2-2.1 1.4-.2 1.8-.6 2-2.1Z" />
+    </>
+  ),
+  building: (
+    <>
+      <rect x="4" y="3" width="16" height="18" rx="1.5" />
+      <path d="M9 7h.01M15 7h.01M9 11h.01M15 11h.01M9 15h.01M15 15h.01M10 21v-3h4v3" />
+    </>
+  ),
+  wrench: <path d="M15.5 4a4.5 4.5 0 0 0-5.9 5.9l-6 6a1.5 1.5 0 0 0 2.1 2.1l6-6A4.5 4.5 0 0 0 20 8.5L17 11.5 14.5 9 17.5 6" />,
+  globe: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18M12 3c2.5 2.5 3.8 5.7 3.8 9S14.5 18.5 12 21c-2.5-2.5-3.8-5.7-3.8-9S9.5 5.5 12 3Z" />
+    </>
+  ),
 };
 
 type IconProps = SVGProps<SVGSVGElement> & { name: IconName };

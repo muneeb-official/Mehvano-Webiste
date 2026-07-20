@@ -8,12 +8,12 @@ import { Reveal } from "@/components/ui/Reveal";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
-import { AGENT, SERVICE_AREA, SOCIALS } from "@/lib/constants";
+import { COMPANY, SITE, SOCIALS } from "@/lib/constants";
 
 export const metadata: Metadata = buildMetadata({
-  title: `Contact ${AGENT.name} — ${AGENT.role}`,
+  title: `Contact ${SITE.brand}`,
   description:
-    "Get in touch with Mehvish Aslam for buying, selling, or a free home valuation in Anne Arundel and Howard County, MD. Fast, friendly, no pressure.",
+    "Get in touch with Mehvano LLC about medical & nursing care, AI services, real estate, IT & software, or business support across Maryland. Fast, friendly, no pressure.",
   path: "/contact",
 });
 
@@ -34,7 +34,7 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="Let's talk"
         title="Get in touch"
-        description="Have a question, ready to tour, or just exploring? Send a note and I'll reply personally — usually within minutes during the day."
+        description="Need care, a build, a sale, or business support — or not sure which? Send a note and a real person from the right team will reply, usually within minutes during the day."
         crumbs={crumbs}
       />
 
@@ -44,22 +44,22 @@ export default function ContactPage() {
           <Reveal variant="left" className="flex flex-col gap-8">
             <SectionHeading eyebrow="Reach me directly" title="A real person, quick to respond" as="h2" />
             <div className="flex flex-col gap-4">
-              <a href={AGENT.phoneHref} className="group flex items-center gap-4">
+              <a href={COMPANY.phoneHref} className="group flex items-center gap-4">
                 <span className="grid h-12 w-12 place-items-center rounded-xl bg-sand text-gold-deep transition-colors group-hover:bg-ink group-hover:text-fg-inverse">
                   <Icon name="phone" className="h-5 w-5" />
                 </span>
                 <span>
                   <span className="block text-sm text-fg-subtle">Call or text</span>
-                  <span className="font-display text-lg font-bold text-fg">{AGENT.phone}</span>
+                  <span className="font-display text-lg font-bold text-fg">{COMPANY.phone}</span>
                 </span>
               </a>
-              <a href={AGENT.emailHref} className="group flex items-center gap-4">
+              <a href={COMPANY.emailHref} className="group flex items-center gap-4">
                 <span className="grid h-12 w-12 place-items-center rounded-xl bg-sand text-gold-deep transition-colors group-hover:bg-ink group-hover:text-fg-inverse">
                   <Icon name="mail" className="h-5 w-5" />
                 </span>
                 <span>
                   <span className="block text-sm text-fg-subtle">Email</span>
-                  <span className="font-display text-lg font-bold text-fg">{AGENT.email}</span>
+                  <span className="font-display text-lg font-bold text-fg">{COMPANY.email}</span>
                 </span>
               </a>
               <div className="flex items-center gap-4">
@@ -69,7 +69,7 @@ export default function ContactPage() {
                 <span>
                   <span className="block text-sm text-fg-subtle">Service area</span>
                   <span className="font-display text-lg font-bold text-fg">
-                    {SERVICE_AREA.counties.join(" & ")}, MD
+                    {COMPANY.addressLocality}, {COMPANY.addressRegion} · All of Maryland
                   </span>
                 </span>
               </div>

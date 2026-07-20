@@ -7,7 +7,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 export default function NotFound() {
   return (
     <>
-      <Header overHero={false} />
+      <Header />
       <main id="main" className="grid min-h-[70vh] place-items-center bg-cream pt-24">
         <Container className="text-center">
           <Eyebrow>Page not found</Eyebrow>

@@ -6,7 +6,8 @@
  * defined once and stays consistent everywhere (name, license, service area).
  */
 import type { Article, Faq } from "@/content/types";
-import { AGENT, SERVICE_AREA, SITE, ZIPS } from "./constants";
+import { AGENT, COMPANY, SERVICE_AREA, SITE, ZIPS } from "./constants";
+import { SERVICES } from "./services";
 
 const absolute = (path = "/"): string =>
   path.startsWith("http") ? path : `${SITE.url}${path.startsWith("/") ? "" : "/"}${path}`;
@@ -57,21 +58,43 @@ export function realEstateAgentSchema() {
   };
 }
 
-/** The marketing brand / LLC (report §14 — the media brand owns the site). */
+/** The multi-service LLC — the parent entity that owns the site. */
 export function organizationSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": "RealEstateAgent",
+    "@type": "Organization",
     "@id": ORG_ID,
-    name: SITE.brand,
+    name: COMPANY.legalName,
+    legalName: COMPANY.legalName,
     url: SITE.url,
     image: absolute("/og/mehvano-og.jpg"),
     logo: absolute("/logo.png"),
-    description: SITE.description,
-    areaServed,
+    description: COMPANY.description,
+    foundingDate: COMPANY.founded,
+    areaServed: { "@type": "State", name: SERVICE_AREA.stateName },
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: COMPANY.addressLocality,
+      addressRegion: COMPANY.addressRegion,
+      postalCode: COMPANY.postalCode,
+      addressCountry: "US",
+    },
+    telephone: COMPANY.phone,
+    email: COMPANY.email,
     employee: { "@id": AGENT_ID },
-    telephone: AGENT.phone,
-    email: AGENT.email,
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: `${SITE.brand} Services`,
+      itemListElement: SERVICES.map((s) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: s.title,
+          description: s.summary,
+          url: `${SITE.url}/services/${s.slug}`,
+        },
+      })),
+    },
   };
 }
 

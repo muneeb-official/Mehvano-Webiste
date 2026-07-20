@@ -14,16 +14,18 @@ export const metadata: Metadata = {
   description: SITE.description,
   applicationName: SITE.brand,
   keywords: [
+    "Maryland services company",
+    "medical and nursing staffing Maryland",
+    "home health care Maryland",
+    "AI services Maryland",
+    "AI automation for small business",
     "Maryland real estate agent",
-    "Severn MD homes for sale",
-    "Pasadena MD realtor",
-    "Ellicott City homes",
-    "Anne Arundel County real estate",
-    "Howard County realtor",
-    "what's my home worth Maryland",
+    "IT and software development Maryland",
+    "business consulting LLC formation Maryland",
+    "digital marketing agency Maryland",
   ],
-  authors: [{ name: "Mehvish Aslam" }],
-  creator: "Mehvish Aslam",
+  authors: [{ name: SITE.brand }],
+  creator: SITE.brand,
   alternates: { canonical: "/" },
   // Adaptive favicon: black "M" on light tabs, white "M" on dark tabs.
   // /favicon.ico (black) also serves as the default for direct requests.
@@ -46,7 +48,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1c1c1b",
+  themeColor: "#131720",
   colorScheme: "light",
 };
 

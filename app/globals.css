@@ -21,35 +21,35 @@
   --font-display: var(--font-archivo), "Archivo", system-ui, sans-serif;
   --font-body: var(--font-inter), "Inter", system-ui, sans-serif;
 
-  /* ---- Brand palette — warm earthy neutrals ----------------------------- */
+  /* ---- Brand palette — cool silver / slate (hero "droplet" theme) ------- */
   /* Token names are legacy ("cream", "sand", "gold"); values below are the
-     Onyx / Walnut / Ash / Greige / Stucco palette. Edit here to retint the
-     whole site.
-       Onyx   #1C1C1B    Walnut #6A5D52    Ash #979086
-       Greige #B7AC9B    Stucco #E2E2DE                                     */
+     cool Onyx-blue / Slate / Silver palette derived from the homepage hero.
+     Edit here to retint the whole site.
+       Onyx-blue #131720   Slate #5A6A85   Steel #7F90AA
+       Silver    #AEBCCF   Mist  #E8EBEF                                    */
   --color-paper: #ffffff;
-  --color-cream: #e2e2de;       /* Stucco: light page background           */
-  --color-sand: #d6d2ca;        /* warm neutral surface (subtle cards)     */
-  --color-sand-deep: #c7c2b7;   /* deeper warm neutral surface             */
-  --color-ink: #1c1c1b;         /* Onyx: dark surfaces, footer, buttons    */
-  --color-charcoal: #2a2723;    /* warm near-black (gradient step)         */
-  --color-graphite: #3a342c;    /* warm dark (gradient step toward Walnut) */
+  --color-cream: #e8ebef;       /* Mist: cool light page background         */
+  --color-sand: #dde1e8;        /* cool neutral surface (subtle cards)      */
+  --color-sand-deep: #ccd2dc;   /* deeper cool neutral surface              */
+  --color-ink: #131720;         /* Onyx-blue: dark surfaces, footer, buttons*/
+  --color-charcoal: #1c2230;    /* cool near-black (gradient step)          */
+  --color-graphite: #2b3446;    /* cool dark slate (gradient step)          */
 
-  /* ---- Accent (warm taupe/greige) — readable light/dark tints ----------- */
-  --color-gold: #979086;        /* Ash: base fills, icons, dots            */
-  --color-gold-bright: #b7ac9b; /* Greige: readable text/accents on dark   */
-  --color-gold-deep: #6a5d52;   /* Walnut: readable accent text on light   */
+  /* ---- Accent (cool silver-blue) — readable light/dark tints ------------ */
+  --color-gold: #7f90aa;        /* Steel: base fills, icons, dots           */
+  --color-gold-bright: #aebccf; /* Silver: readable text/accents on dark    */
+  --color-gold-deep: #5a6a85;   /* Slate: readable accent text on light     */
 
   /* ---- Foreground / text ------------------------------------------------ */
-  --color-fg: #1f1d1a;          /* soft Onyx: primary text                 */
-  --color-fg-muted: #635d54;    /* warm muted gray (body copy)             */
-  --color-fg-subtle: #837c71;   /* warm subtle gray (captions/labels)      */
-  --color-fg-inverse: #ecebe7;  /* light text on dark                      */
-  --color-fg-inverse-muted: #ada79c; /* muted light text on dark           */
+  --color-fg: #161a22;          /* cool Onyx: primary text                  */
+  --color-fg-muted: #545c6b;    /* cool muted gray (body copy)              */
+  --color-fg-subtle: #7a8291;   /* cool subtle gray (captions/labels)       */
+  --color-fg-inverse: #eaedf2;  /* light text on dark                       */
+  --color-fg-inverse-muted: #a4adbd; /* muted light text on dark            */
 
   /* ---- Lines / borders -------------------------------------------------- */
-  --color-line: #d5d1c8;
-  --color-line-strong: #c2bdb2;
+  --color-line: #d3d8e0;
+  --color-line-strong: #bfc6d1;
 
   /* ---- Feedback --------------------------------------------------------- */
   --color-success: #2f7d5b;
@@ -64,9 +64,9 @@
   --radius-3xl: 2.75rem;
 
   /* ---- Shadows ---------------------------------------------------------- */
-  --shadow-card: 0 1px 2px rgba(20, 17, 13, 0.04), 0 14px 34px -14px rgba(20, 17, 13, 0.18);
-  --shadow-lift: 0 2px 4px rgba(20, 17, 13, 0.05), 0 26px 64px -22px rgba(20, 17, 13, 0.3);
-  --shadow-glass: 0 8px 40px -12px rgba(0, 0, 0, 0.45);
+  --shadow-card: 0 1px 2px rgba(19, 23, 32, 0.05), 0 14px 34px -14px rgba(19, 23, 32, 0.2);
+  --shadow-lift: 0 2px 4px rgba(19, 23, 32, 0.06), 0 26px 64px -22px rgba(19, 23, 32, 0.32);
+  --shadow-glass: 0 8px 40px -12px rgba(11, 16, 26, 0.5);
 
   /* ---- Layout ----------------------------------------------------------- */
   --spacing-gutter: 1.5rem;
@@ -101,11 +101,14 @@
     overflow-x: clip;
   }
 
+  /* Reference look: clean, lighter-weight, sentence-case display headings.
+     Individual headings can still opt into heavier weights (font-bold/black)
+     or uppercase where a component wants it. */
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    font-weight: 800;
+    font-weight: 600;
     letter-spacing: -0.02em;
-    line-height: 1.04;
+    line-height: 1.08;
     text-wrap: balance;
   }
 
@@ -143,20 +146,21 @@
   }
 
   .glass-dark {
-    background: rgba(28, 28, 27, 0.55);
+    background: rgba(19, 23, 32, 0.55);
     backdrop-filter: blur(18px) saturate(140%);
     -webkit-backdrop-filter: blur(18px) saturate(140%);
     border: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  /* Gradient wash for the dark hero shell (warm onyx) */
+  /* Gradient wash for the dark hero shell (cool onyx-blue). Sits over the
+     animated canvas so headline text stays readable. */
   .hero-veil {
     background: linear-gradient(
       104deg,
-      rgba(28, 28, 27, 0.92) 0%,
-      rgba(42, 39, 35, 0.72) 34%,
-      rgba(58, 52, 44, 0.4) 62%,
-      rgba(28, 28, 27, 0.6) 100%
+      rgba(19, 23, 32, 0.92) 0%,
+      rgba(28, 34, 48, 0.72) 34%,
+      rgba(43, 52, 70, 0.4) 62%,
+      rgba(19, 23, 32, 0.6) 100%
     );
   }
 
@@ -167,6 +171,168 @@
     background-clip: text;
     color: transparent;
   }
+
+  /*
+   * HERO SHELL — warm dark base behind the animated 3D canvas. If the canvas
+   * fails to load or is disabled (reduced-motion / no-JS), this gradient alone
+   * still gives a finished, on-brand hero.
+   */
+  .hero-green {
+    background:
+      radial-gradient(60% 80% at 78% 88%, rgba(174, 188, 207, 0.35) 0%, rgba(90, 106, 133, 0.2) 34%, rgba(19, 23, 32, 0) 66%),
+      linear-gradient(135deg, #131720 0%, #1c2230 52%, #2b3446 100%);
+  }
+
+  /*
+   * HERO SILVER — cool light-blue "rippled water" shell for the RESADEX-style
+   * homepage hero. The animated sphere + ripple canvas sits on top; this
+   * gradient alone is the finished fallback (reduced-motion / no-JS).
+   */
+  .hero-silver {
+    background:
+      radial-gradient(58% 62% at 50% 42%, rgba(226, 233, 242, 0.9) 0%, rgba(198, 210, 226, 0.55) 40%, rgba(170, 184, 205, 0) 72%),
+      linear-gradient(168deg, #c3cedd 0%, #aebccf 46%, #93a3bc 100%);
+  }
+
+  /* Soft cool bloom on a LIGHT surface (secondary hero / about media). */
+  .glow-warm {
+    background:
+      radial-gradient(90% 120% at 82% 78%, rgba(174, 188, 207, 0.55) 0%, rgba(214, 219, 227, 0.35) 32%, rgba(232, 235, 239, 0) 66%),
+      linear-gradient(160deg, #ccd2dc 0%, #dee2e9 48%, #eef0f4 100%);
+  }
+
+  /* Cool bloom on a DARK surface (used for the CTA showcase band). */
+  .glow-warm-dark {
+    background:
+      radial-gradient(80% 120% at 88% 82%, rgba(174, 188, 207, 0.5) 0%, rgba(90, 106, 133, 0.25) 34%, rgba(19, 23, 32, 0) 68%),
+      linear-gradient(155deg, #1c2230 0%, #2b3446 55%, #5a6a85 120%);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ *  Hero animated SVG background (components/sections/HeroCanvas.tsx)
+ *  Gradient-mesh blobs drift on their own loops behind a faint line network.
+ *  All motion is GPU-composited transform/opacity — no per-frame JS. Motion is
+ *  removed entirely under prefers-reduced-motion (block below is scoped to
+ *  no-preference), leaving an elegant static frame.
+ * ------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  .hb-blob {
+    transform-box: fill-box;
+    transform-origin: center;
+    will-change: transform, opacity;
+  }
+  .hb-blob-1 { animation: hb-drift-1 22s var(--ease-out-soft) infinite alternate; }
+  .hb-blob-2 { animation: hb-drift-2 26s var(--ease-out-soft) infinite alternate; }
+  .hb-blob-3 { animation: hb-drift-3 19s var(--ease-out-soft) infinite alternate; }
+  .hb-blob-4 { animation: hb-drift-1 24s var(--ease-out-soft) infinite alternate-reverse; }
+
+  .hb-lines path {
+    stroke-dasharray: 6 10;
+    animation: hb-flow 14s linear infinite;
+  }
+  .hb-node-1 { animation: hb-pulse 4.5s ease-in-out infinite; }
+  .hb-node-2 { animation: hb-pulse 5.5s ease-in-out infinite 0.6s; }
+  .hb-node-3 { animation: hb-pulse 6.5s ease-in-out infinite 1.2s; }
+
+  /* Levitating chrome sphere — bobs gently up and down. */
+  .hs-bob {
+    transform-box: view-box;
+    will-change: transform;
+    animation: hs-bob 5.5s ease-in-out infinite;
+  }
+  /* Shadow tightens/expands as the sphere rises and falls. */
+  .hs-shadow {
+    transform-box: fill-box;
+    transform-origin: center;
+    will-change: transform, opacity;
+    animation: hs-shadow 5.5s ease-in-out infinite;
+  }
+
+  /* Concentric ripple rings expand outward + fade, staggered into a wave. */
+  .hr-ring {
+    transform-box: fill-box;
+    transform-origin: center;
+    will-change: transform, opacity;
+    opacity: 0;
+    animation: hr-ring 8s ease-out infinite;
+  }
+  .hr-ring-0 { animation-delay: 0s; }
+  .hr-ring-1 { animation-delay: 1s; }
+  .hr-ring-2 { animation-delay: 2s; }
+  .hr-ring-3 { animation-delay: 3s; }
+  .hr-ring-4 { animation-delay: 4s; }
+  .hr-ring-5 { animation-delay: 5s; }
+  .hr-ring-6 { animation-delay: 6s; }
+  .hr-ring-7 { animation-delay: 7s; }
+
+  /* Service-orbit rings spin; nodes counter-spin so glyphs stay upright. */
+  .orbit-ring-outer { animation: orbit-spin 38s linear infinite; }
+  .orbit-ring-inner { animation: orbit-spin 30s linear infinite reverse; }
+  .orbit-ring-outer .orbit-node-inner { animation: orbit-spin 38s linear infinite reverse; }
+  .orbit-ring-inner .orbit-node-inner { animation: orbit-spin 30s linear infinite; }
+  .orbit-pulse { animation: orbit-pulse 3.4s ease-in-out infinite; }
+}
+
+/* Orbit node placement — applies in ALL motion modes so icons always sit on
+   the ring (only the spin above is motion-gated). Each node is rotated to its
+   angle, pushed out to the ring edge, then the ring's own rotation carries it
+   around. `translate(-50%,-50%)` re-centres the box on its anchor point. */
+.orbit-node {
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--orbit-angle))
+    translateY(calc(-1 * var(--orbit-r)))
+    rotate(calc(-1 * var(--orbit-angle)));
+}
+.orbit-ring,
+.orbit-node-inner {
+  will-change: transform;
+}
+
+@keyframes orbit-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes orbit-pulse {
+  0%, 100% { opacity: 0.25; transform: scale(1); }
+  50%      { opacity: 0.8; transform: scale(1.12); }
+}
+
+@keyframes hb-drift-1 {
+  from { transform: translate(0, 0) scale(1); opacity: 0.85; }
+  to   { transform: translate(70px, -50px) scale(1.12); opacity: 1; }
+}
+@keyframes hb-drift-2 {
+  from { transform: translate(0, 0) scale(1.05); opacity: 1; }
+  to   { transform: translate(-80px, 60px) scale(0.9); opacity: 0.8; }
+}
+@keyframes hb-drift-3 {
+  from { transform: translate(0, 0) scale(0.95); opacity: 0.8; }
+  to   { transform: translate(50px, 70px) scale(1.15); opacity: 1; }
+}
+@keyframes hb-flow {
+  to { stroke-dashoffset: -160; }
+}
+@keyframes hb-pulse {
+  0%, 100% { opacity: 0.15; }
+  50%      { opacity: 0.75; }
+}
+
+/* Chrome sphere + ripple motion */
+@keyframes hs-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-26px); }
+}
+@keyframes hs-shadow {
+  /* Sphere at rest (low) → shadow tight + dark; sphere up → wide + faint. */
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50%      { transform: scale(1.28); opacity: 0.28; }
+}
+@keyframes hr-ring {
+  0%   { transform: scale(0.32); opacity: 0; }
+  10%  { opacity: 1; }
+  85%  { opacity: 0.5; }
+  100% { transform: scale(4.6); opacity: 0; }
 }
 
 /* ---------------------------------------------------------------------------

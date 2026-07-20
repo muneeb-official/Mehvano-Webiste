@@ -16,8 +16,8 @@ export default function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: 72,
-          background: "linear-gradient(135deg, #1c1c1b 0%, #2a2723 55%, #3a342c 100%)",
-          color: "#ecebe7",
+          background: "linear-gradient(135deg, #131720 0%, #1c2230 55%, #2b3446 100%)",
+          color: "#eaedf2",
           fontFamily: "sans-serif",
         }}
       >
@@ -27,7 +27,7 @@ export default function OpengraphImage() {
               width: 56,
               height: 56,
               borderRadius: 16,
-              background: "#b7ac9b",
+              background: "#aebccf",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -38,24 +38,24 @@ export default function OpengraphImage() {
                 width: 22,
                 height: 22,
                 borderRadius: 5,
-                background: "#1c1c1b",
+                background: "#131720",
                 transform: "rotate(45deg)",
               }}
             />
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <span style={{ fontSize: 30, fontWeight: 800, letterSpacing: -1 }}>
-              {SITE.brandShort} <span style={{ color: "#b7ac9b" }}>.</span>
+              {SITE.brandShort} <span style={{ color: "#aebccf" }}>.</span>
             </span>
-            <span style={{ fontSize: 15, letterSpacing: 4, color: "#ada79c", textTransform: "uppercase" }}>
-              Realty
+            <span style={{ fontSize: 15, letterSpacing: 4, color: "#a4adbd", textTransform: "uppercase" }}>
+              LLC
             </span>
           </div>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <span style={{ fontSize: 20, letterSpacing: 3, color: "#b7ac9b", textTransform: "uppercase" }}>
-            Anne Arundel & Howard County, MD
+          <span style={{ fontSize: 20, letterSpacing: 3, color: "#aebccf", textTransform: "uppercase" }}>
+            Serving all of Maryland
           </span>
           <span
             style={{
@@ -68,15 +68,15 @@ export default function OpengraphImage() {
               maxWidth: 980,
             }}
           >
-            Find your next home in Maryland
+            One trusted partner for every service
           </span>
         </div>
 
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
-          <span style={{ fontSize: 26, color: "#ada79c" }}>
-            Mehvish Aslam · REALTOR®
+          <span style={{ fontSize: 26, color: "#a4adbd" }}>
+            Medical · AI · Real Estate · IT · Business
           </span>
-          <span style={{ fontSize: 24, color: "#b7ac9b" }}>homesbymehvish.com</span>
+          <span style={{ fontSize: 24, color: "#aebccf" }}>mehvano.com</span>
         </div>
       </div>
     ),

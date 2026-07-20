@@ -8,7 +8,7 @@ import { Icon } from "@/components/ui/Icon";
 import { AGENT } from "@/lib/constants";
 import { HERO_CARD_STATS } from "@/lib/portfolio";
 
-const SPECIALTIES = ["Fort Meade relocation", "First-time buyers", "Seller pricing"];
+const SPECIALTIES = ["Real estate", "Relocation", "First-time buyers"];
 
 /**
  * Floating agent widget. A blinking, always-reachable button in the bottom-right
@@ -144,7 +144,7 @@ export function PortfolioFab() {
             aria-hidden
             className="pointer-events-none mr-3 max-w-0 overflow-hidden whitespace-nowrap rounded-full bg-ink px-0 py-2.5 text-sm font-medium text-white opacity-0 shadow-lift transition-all duration-300 ease-out group-hover:max-w-[20rem] group-hover:px-4 group-hover:opacity-100 group-focus-within:max-w-[20rem] group-focus-within:px-4 group-focus-within:opacity-100"
           >
-            Meet {firstName}, your real estate agent
+            Meet {firstName}, our real estate lead
           </span>
         ) : null}
 
@@ -154,7 +154,7 @@ export function PortfolioFab() {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-haspopup="dialog"
-          aria-label={open ? "Close agent card" : `Meet ${AGENT.name}, your real estate agent`}
+          aria-label={open ? "Close agent card" : `Meet ${AGENT.name}, our real estate lead`}
           className="relative grid h-14 w-14 shrink-0 place-items-center"
         >
           {!open ? (

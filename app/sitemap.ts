@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SITE, ZIPS } from "@/lib/constants";
+import { SERVICES } from "@/lib/services";
 import { getAllArticles, hrefFor } from "@/lib/cms";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -8,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${base}/`, lastModified, changeFrequency: "weekly", priority: 1 },
+    { url: `${base}/services`, lastModified, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/home-value`, lastModified, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/neighborhoods`, lastModified, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/market-reports`, lastModified, changeFrequency: "weekly", priority: 0.8 },
@@ -16,6 +18,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/about`, lastModified, changeFrequency: "yearly", priority: 0.6 },
     { url: `${base}/contact`, lastModified, changeFrequency: "yearly", priority: 0.6 },
   ];
+
+  const serviceRoutes: MetadataRoute.Sitemap = SERVICES.map((s) => ({
+    url: `${base}/services/${s.slug}`,
+    lastModified,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
 
   const zipRoutes: MetadataRoute.Sitemap = ZIPS.map((z) => ({
     url: `${base}/home-value/${z.slug}`,
@@ -31,5 +40,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...zipRoutes, ...articleRoutes];
+  return [...staticRoutes, ...serviceRoutes, ...zipRoutes, ...articleRoutes];
 }

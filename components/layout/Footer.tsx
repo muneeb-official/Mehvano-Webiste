@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "./Logo";
 import { Icon, type IconName } from "@/components/ui/Icon";
-import { AGENT, FOOTER_NAV, LEGAL, SITE, SOCIALS } from "@/lib/constants";
+import { COMPANY, FOOTER_NAV, LEGAL, SITE, SOCIALS } from "@/lib/constants";
 
 const socialIcon: Record<string, IconName> = {
   Instagram: "instagram",
@@ -24,17 +24,17 @@ export function Footer() {
               {SITE.description}
             </p>
             <div className="flex flex-col gap-2 text-sm">
-              <a href={AGENT.phoneHref} className="inline-flex items-center gap-2.5 text-fg-inverse-muted transition-colors hover:text-fg-inverse">
+              <a href={COMPANY.phoneHref} className="inline-flex items-center gap-2.5 text-fg-inverse-muted transition-colors hover:text-fg-inverse">
                 <Icon name="phone" className="h-4 w-4 text-gold-bright" />
-                {AGENT.phone}
+                {COMPANY.phone}
               </a>
-              <a href={AGENT.emailHref} className="inline-flex items-center gap-2.5 text-fg-inverse-muted transition-colors hover:text-fg-inverse">
+              <a href={COMPANY.emailHref} className="inline-flex items-center gap-2.5 text-fg-inverse-muted transition-colors hover:text-fg-inverse">
                 <Icon name="mail" className="h-4 w-4 text-gold-bright" />
-                {AGENT.email}
+                {COMPANY.email}
               </a>
               <span className="inline-flex items-center gap-2.5 text-fg-inverse-muted">
                 <Icon name="map-pin" className="h-4 w-4 text-gold-bright" />
-                Anne Arundel &amp; Howard County, MD
+                {COMPANY.addressLocality}, {COMPANY.addressRegion} · Serving all of Maryland
               </span>
             </div>
             <div className="flex gap-2">
@@ -80,6 +80,7 @@ export function Footer() {
         {/* Legal / compliance */}
         <div className="mt-14 border-t border-white/10 pt-8">
           <div className="flex flex-col gap-4 text-xs leading-relaxed text-fg-inverse-muted/80">
+            <p>{LEGAL.companyLine}</p>
             <p>{LEGAL.brokerageLine}</p>
             <p>
               {LEGAL.equalHousing} {LEGAL.idxDisclaimer} {LEGAL.disclaimer}
