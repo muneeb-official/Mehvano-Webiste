@@ -221,14 +221,15 @@ export default function PortfolioPage() {
        * =================================================================== */}
       <section className="pf-ink text-white">
         <div className={cn(SHELL, "grid items-center gap-12 py-20 sm:py-28 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16")}>
-          <Appear variant="scale" className="mx-auto w-full max-w-sm overflow-hidden rounded-t-[999px] rounded-b-[1.75rem] bg-[#b3a68e]">
+          {/* Full cutout (transparent PNG) floating on the dark block — no frame. */}
+          <Appear variant="scale" className="flex justify-center">
             <Image
-              src="/agent/agent.jpg"
+              src="/agent/agent-cutout.png"
               alt={`${AGENT.name}, ${AGENT.role}`}
               width={480}
-              height={600}
+              height={694}
               sizes="(max-width: 1024px) 80vw, 32vw"
-              className="aspect-[4/5] w-full object-cover"
+              className="h-auto w-full max-w-sm object-contain"
             />
           </Appear>
 
