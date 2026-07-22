@@ -207,6 +207,19 @@
       radial-gradient(80% 120% at 88% 82%, rgba(174, 188, 207, 0.5) 0%, rgba(90, 106, 133, 0.25) 34%, rgba(19, 23, 32, 0) 68%),
       linear-gradient(155deg, #1c2230 0%, #2b3446 55%, #5a6a85 120%);
   }
+
+  /*
+   * SECTION DARK — the deep navy-slate gradient from the reference image.
+   * Darkest in the TOP-LEFT (#151b27), warming through a mid slate (#26303f)
+   * to a lit blue-grey toward the BOTTOM-RIGHT (#3c4a63), with a soft luminous
+   * bloom on the right where key CTAs sit. Used as the "onyx" Section tone so
+   * the homepage can alternate white ↔ dark down the page.
+   */
+  .section-dark {
+    background:
+      radial-gradient(70% 90% at 82% 62%, rgba(120, 140, 170, 0.35) 0%, rgba(60, 74, 99, 0.18) 40%, rgba(21, 27, 39, 0) 72%),
+      linear-gradient(122deg, #151b27 0%, #1d2634 34%, #26303f 60%, #3c4a63 100%);
+  }
 }
 
 /* ---------------------------------------------------------------------------
@@ -442,6 +455,33 @@
     opacity: 1;
     transform: none;
   }
+}
+
+/* ---------------------------------------------------------------------------
+ *  Portfolio "Angel"-style amber theme (used on /portfolio only)
+ *  A warm golden real-estate landing look: deep amber hero + contact gradients,
+ *  a soft cream page tone, and dark near-black feature blocks. Scoped to its own
+ *  utility classes so it never leaks into the cool site-wide palette.
+ * ------------------------------------------------------------------------- */
+.pf-amber {
+  /* Deep saffron corner glow → warm gold, matching the reference hero/contact. */
+  background:
+    radial-gradient(120% 120% at 85% 12%, rgba(244, 197, 100, 0.6) 0%, rgba(214, 150, 40, 0) 55%),
+    linear-gradient(150deg, #b6771a 0%, #c98a1e 34%, #dda233 68%, #e9b648 100%);
+}
+.pf-cream {
+  background-color: #f3ede2;
+}
+.pf-ink {
+  background-color: #191610;
+}
+.pf-gold-text {
+  color: #c07f16;
+}
+/* Elegant serif for portfolio hero + section titles (see app/fonts.ts). */
+.pf-serif {
+  font-family: var(--font-playfair), Georgia, "Times New Roman", serif;
+  letter-spacing: -0.01em;
 }
 
 /* Hide the scrollbar on the horizontal testimonial rail (still scrollable). */

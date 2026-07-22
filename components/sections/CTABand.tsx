@@ -50,7 +50,7 @@ export function CTABand({
   const layout = "flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:justify-between";
 
   return (
-    <section className="glow-warm-dark relative overflow-hidden py-16 sm:py-20">
+    <section className="section-dark relative overflow-hidden py-16 sm:py-20">
       <Container className="relative">
         {slide ? (
           <ScrollSlide as="div" className={layout}>

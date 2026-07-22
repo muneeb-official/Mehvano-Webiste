@@ -7,7 +7,7 @@ type SectionProps = {
   children: ReactNode;
   className?: string;
   /** Background treatment. */
-  tone?: "cream" | "paper" | "sand" | "ink";
+  tone?: "cream" | "paper" | "sand" | "ink" | "onyx";
   /** Vertical rhythm. */
   spacing?: "sm" | "md" | "lg";
   container?: false | "default" | "prose" | "wide";
@@ -26,6 +26,7 @@ const tones = {
   paper: "bg-paper text-fg",
   sand: "bg-sand text-fg",
   ink: "bg-ink text-fg-inverse",
+  onyx: "section-dark text-fg-inverse",
 };
 
 const spacings = {
