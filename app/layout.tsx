@@ -27,13 +27,15 @@ export const metadata: Metadata = {
   authors: [{ name: SITE.brand }],
   creator: SITE.brand,
   alternates: { canonical: "/" },
-  // Adaptive favicon: black "M" on light tabs, white "M" on dark tabs.
-  // /favicon.ico (black) also serves as the default for direct requests.
+  // Adaptive favicon: the Mehvano "wing" mark — navy on light tabs, white on
+  // dark tabs. /favicon.ico stays as the default for legacy direct requests.
   icons: {
     icon: [
-      { url: "/favicon.ico", media: "(prefers-color-scheme: light)", sizes: "16x16 32x32 48x48", type: "image/x-icon" },
-      { url: "/icon-dark.ico", media: "(prefers-color-scheme: dark)", sizes: "16x16 32x32 48x48", type: "image/x-icon" },
+      { url: "/icon.png", media: "(prefers-color-scheme: light)", sizes: "32x32", type: "image/png" },
+      { url: "/icon-dark.png", media: "(prefers-color-scheme: dark)", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48", type: "image/x-icon" },
     ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
   },
   openGraph: {
     type: "website",

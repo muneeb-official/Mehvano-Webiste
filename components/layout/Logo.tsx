@@ -10,53 +10,46 @@ type LogoProps = {
 };
 
 /**
- * Brand mark: the Mehvano "M" logo + "ehvano" wordmark (reads "Mehvano").
- * Both the white (for dark backgrounds) and black (for light) logos are rendered
- * and cross-faded by `tone`, so the header's transparent↔solid swap is seamless.
+ * Mehvano brand mark — the "wing" only (no wordmark). Cross-fades two artworks
+ * by `tone`:
+ *   - default  → original navy / royal-blue / grey wing (for LIGHT backgrounds)
+ *   - inverse  → bright wing: white top feather, light-blue middle, brighter
+ *                light-blue bottom (for the DARK footer)
  */
 export function Logo({ tone = "default", className, href = "/" }: LogoProps) {
   const inverse = tone === "inverse";
   return (
     <Link
       href={href}
-      className={cn("group inline-flex items-center gap-1 font-display", className)}
+      className={cn("group inline-flex items-center", className)}
       aria-label={`${SITE.brand} — home`}
     >
-      <span className="relative block h-22 w-22 shrink-0 transition-transform duration-300 group-hover:scale-105">
+      <span className="relative block h-16 w-[3.9rem] shrink-0 transition-transform duration-300 group-hover:scale-105 sm:h-12 sm:w-[4.3rem]">
+        {/* Light-background wing (original colours) */}
         <Image
-          src="/Mehvano_logo_in_white.png"
-          alt=""
-          aria-hidden
-          width={850}
-          height={850}
-          priority
-          className={cn(
-            "absolute inset-0 h-full w-full object-contain transition-opacity duration-300",
-            inverse ? "opacity-100" : "opacity-0"
-          )}
-        />
-        <Image
-          src="/Mehvano_logo_in_black.png"
+          src="/mehvano-wing.png"
           alt="Mehvano"
-          width={850}
-          height={850}
+          width={434}
+          height={291}
           priority
           className={cn(
-            "absolute inset-0 h-full w-full object-contain transition-opacity duration-300",
+            "absolute inset-0 h-full w-full object-contain object-left transition-opacity duration-300",
             inverse ? "opacity-0" : "opacity-100"
           )}
         />
-      </span>
-      <span className="flex flex-col leading-none">
-        <span
+        {/* Dark-background wing (bright ramp) */}
+        <Image
+          src="/mehvano-wing-dark.png"
+          alt=""
+          aria-hidden
+          width={434}
+          height={291}
+          priority
           className={cn(
-            "-ml-4 text-lg font-extrabold tracking-tight",
-            inverse ? "text-fg-inverse" : "text-fg"
+            "absolute inset-0 h-full w-full object-contain object-left transition-opacity duration-300",
+            inverse ? "opacity-100" : "opacity-0"
           )}
-        >
-          ehvano
-          <span className="text-gold">.</span>
-        </span>
+        />
       </span>
     </Link>
   );
