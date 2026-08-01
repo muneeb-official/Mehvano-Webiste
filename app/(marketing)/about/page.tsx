@@ -64,7 +64,7 @@ export default function AboutPage() {
           <Reveal variant="left" className="flex flex-col gap-5">
             <SectionHeading title="One team, built to handle whatever you need" as="h2" />
             <p className="text-lg leading-relaxed text-fg-muted">
-              Mehvano started with a simple frustration: getting good help usually
+              Mehvano started with a simple problem: getting good help usually
               means hiring, vetting, and managing a different vendor for every need.
               We built a single company that brings trusted specialists together —
               healthcare, technology, real estate, and business services — so our
