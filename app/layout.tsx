@@ -33,8 +33,10 @@ export const metadata: Metadata = {
     icon: [
       { url: "/icon.png", media: "(prefers-color-scheme: light)", sizes: "32x32", type: "image/png" },
       { url: "/icon-dark.png", media: "(prefers-color-scheme: dark)", sizes: "32x32", type: "image/png" },
-      { url: "/favicon.ico", sizes: "16x16 32x32 48x48", type: "image/x-icon" },
+      { url: "/favicon.ico", media: "(prefers-color-scheme: light)", sizes: "32x32", type: "image/x-icon" },
+      { url: "/icon-dark.ico", media: "(prefers-color-scheme: dark)", sizes: "32x32", type: "image/x-icon" },
     ],
+    shortcut: ["/favicon.ico"],
     apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
   },
   openGraph: {
