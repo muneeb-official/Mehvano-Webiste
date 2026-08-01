@@ -10,11 +10,10 @@ type LogoProps = {
 };
 
 /**
- * Mehvano brand mark — the "wing" only (no wordmark). Cross-fades two artworks
- * by `tone`:
- *   - default  → original navy / royal-blue / grey wing (for LIGHT backgrounds)
- *   - inverse  → bright wing: white top feather, light-blue middle, brighter
- *                light-blue bottom (for the DARK footer)
+ * Mehvano brand mark — the full logo (wing + "mehvano" wordmark). Cross-fades
+ * two artworks by `tone`:
+ *   - default  → navy wing + navy wordmark (for LIGHT backgrounds, e.g. navbar)
+ *   - inverse  → bright wing + white wordmark (for the DARK footer)
  */
 export function Logo({ tone = "default", className, href = "/" }: LogoProps) {
   const inverse = tone === "inverse";
@@ -24,26 +23,26 @@ export function Logo({ tone = "default", className, href = "/" }: LogoProps) {
       className={cn("group inline-flex items-center", className)}
       aria-label={`${SITE.brand} — home`}
     >
-      <span className="relative block h-16 w-[3.9rem] shrink-0 transition-transform duration-300 group-hover:scale-105 sm:h-12 sm:w-[4.3rem]">
-        {/* Light-background wing (original colours) */}
+      <span className="relative block h-12 w-[7.3rem] shrink-0 transition-transform duration-300 group-hover:scale-105 sm:h-14 sm:w-[8.6rem]">
+        {/* Light-background logo (navy wing + navy wordmark) */}
         <Image
-          src="/mehvano-wing.png"
+          src="/mehvano-flat1.png"
           alt="Mehvano"
-          width={434}
-          height={291}
+          width={775}
+          height={508}
           priority
           className={cn(
             "absolute inset-0 h-full w-full object-contain object-left transition-opacity duration-300",
             inverse ? "opacity-0" : "opacity-100"
           )}
         />
-        {/* Dark-background wing (bright ramp) */}
+        {/* Dark-background logo (bright wing + white wordmark) */}
         <Image
-          src="/mehvano-wing-dark.png"
+          src="/mehvano-flat1-dark.png"
           alt=""
           aria-hidden
-          width={434}
-          height={291}
+          width={775}
+          height={508}
           priority
           className={cn(
             "absolute inset-0 h-full w-full object-contain object-left transition-opacity duration-300",
