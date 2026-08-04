@@ -27,8 +27,8 @@ export function ServiceGrid({ items = SERVICES, columns = 3, showBullets = true 
     <div className={`grid gap-5 ${cols[columns]}`}>
       {items.map((s, i) => (
         <Reveal key={s.slug} variant="up" delay={stagger(i)} className="h-full">
-          <Card href={serviceHref(s)} className="group tilt-card flex h-full flex-col gap-4" data-cursor="view">
-            <span className="grid h-12 w-12 place-items-center rounded-xl bg-sand text-gold-deep transition-colors group-hover:bg-ink group-hover:text-fg-inverse">
+          <Card href={serviceHref(s)} tone="gradient" className="group tilt-card flex h-full flex-col gap-4" data-cursor="view">
+            <span className="grid h-12 w-12 place-items-center rounded-xl bg-white/70 text-gold-deep shadow-sm transition-colors group-hover:bg-ink group-hover:text-fg-inverse">
               <Icon name={s.icon} className="h-6 w-6" />
             </span>
             <div>

@@ -7,7 +7,7 @@ type CardProps = {
   className?: string;
   /** Turns the whole card into a link with hover lift. */
   href?: string;
-  tone?: "paper" | "cream" | "sand" | "ink" | "glass";
+  tone?: "paper" | "cream" | "sand" | "ink" | "glass" | "gradient";
   padding?: "none" | "sm" | "md" | "lg";
   interactive?: boolean;
   /** Custom-cursor hint (e.g. "view" | "open") — read by CustomCursor. */
@@ -20,6 +20,8 @@ const tones = {
   sand: "bg-sand border border-line-strong/60",
   ink: "bg-ink text-fg-inverse border border-white/10",
   glass: "glass text-fg-inverse",
+  // Soft teal→white gradient (matches the "By the numbers" panel look).
+  gradient: "card-gradient",
 };
 
 const paddings = {

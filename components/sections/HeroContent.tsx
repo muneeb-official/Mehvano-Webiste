@@ -69,7 +69,7 @@ export function HeroContent() {
     >
       <span className="hero-eyebrow inline-flex items-center gap-2 rounded-full border border-cyan-deep/25 bg-white/70 px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-cyan-deep backdrop-blur-sm">
         <span className="h-1.5 w-1.5 rounded-full bg-cyan" aria-hidden />
-        Maryland · Services &amp; Realty
+        Maryland · Services
       </span>
 
       <h1 className="font-display text-4xl font-semibold leading-[1.04] tracking-tight text-ink sm:text-6xl lg:text-[4.75rem]">

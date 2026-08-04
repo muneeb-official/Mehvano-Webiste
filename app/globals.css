@@ -81,6 +81,9 @@
 
   /* ---- Layout ----------------------------------------------------------- */
   --spacing-gutter: 1.5rem;
+  /* Extra-wide container caps (Tailwind v4 auto-generates max-w-7xl/8xl). */
+  --container-7xl: 80rem;
+  --container-8xl: 90rem;
 
   /* ---- Animation -------------------------------------------------------- */
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
@@ -241,6 +244,25 @@ html.has-custom-cursor * {
 }
 .tilt-card:hover {
   border-color: color-mix(in srgb, var(--color-cyan-deep) 45%, var(--color-line));
+}
+
+/* Aesthetic teal gradient card (matches the "By the numbers" panel). A soft
+   teal bloom in two corners over a near-white base, a hairline teal-tinted
+   border, and a brighter, deeper bloom on hover. Transform/opacity/bg only. */
+.card-gradient {
+  position: relative;
+  background:
+    radial-gradient(120% 130% at 0% 0%, rgba(53, 224, 208, 0.18) 0%, rgba(53, 224, 208, 0) 46%),
+    radial-gradient(120% 130% at 100% 100%, rgba(14, 143, 134, 0.16) 0%, rgba(255, 255, 255, 0) 52%),
+    linear-gradient(150deg, #f3fbfa 0%, #eef5f6 52%, #eaf1f2 100%);
+  border: 1px solid color-mix(in srgb, var(--color-cyan-deep) 18%, var(--color-line));
+}
+.card-gradient:hover {
+  background:
+    radial-gradient(120% 130% at 0% 0%, rgba(53, 224, 208, 0.28) 0%, rgba(53, 224, 208, 0) 48%),
+    radial-gradient(120% 130% at 100% 100%, rgba(14, 143, 134, 0.24) 0%, rgba(255, 255, 255, 0) 54%),
+    linear-gradient(150deg, #f0fbf9 0%, #ecf6f6 52%, #e6f1f1 100%);
+  border-color: color-mix(in srgb, var(--color-cyan-deep) 38%, var(--color-line));
 }
 
 /* Text-reveal masking — each token clips its rising inner span. Inline-block

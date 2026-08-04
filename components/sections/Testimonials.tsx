@@ -19,7 +19,7 @@ export function Testimonials({ items }: TestimonialsProps) {
     <div className="grid gap-5 md:grid-cols-3">
       {items.map((t, idx) => (
         <Reveal key={t.name} variant="up" delay={stagger(idx)} className="h-full">
-          <Card tone="paper" className="flex h-full flex-col gap-4">
+          <Card tone="gradient" className="tilt-card flex h-full flex-col gap-4">
             <div className="flex gap-0.5 text-gold" aria-label="5 out of 5 stars">
               {Array.from({ length: 5 }).map((_, i) => (
                 <Icon key={i} name="star" className="h-4 w-4 fill-gold" />
