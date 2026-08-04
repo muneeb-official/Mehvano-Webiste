@@ -3,6 +3,7 @@ import "./globals.css";
 import { fontVariables } from "./fonts";
 import { SITE } from "@/lib/constants";
 import { JsonLd } from "@/components/ui/JsonLd";
+import { MotionRoot } from "@/components/animation";
 import { organizationSchema, realEstateAgentSchema, websiteSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
@@ -71,7 +72,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
-        {children}
+        <MotionRoot>{children}</MotionRoot>
         <JsonLd data={[organizationSchema(), websiteSchema(), realEstateAgentSchema()]} />
       </body>
     </html>

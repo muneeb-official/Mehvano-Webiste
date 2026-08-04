@@ -1,35 +1,25 @@
-import { HeroCanvas } from "@/components/sections/HeroCanvas";
+import { HeroParticles } from "@/components/sections/HeroParticles";
+import { HeroContent } from "@/components/sections/HeroContent";
 
 /**
- * Homepage hero — full-screen "droplet" scene (RESADEX-style). A levitating
- * chrome sphere bobs over concentric ripples on a cool silver surface
- * (HeroCanvas); the .hero-silver gradient underneath is the instant, finished
- * fallback. The brand wordmark spans the lower third and a "scroll down" cue
- * anchors the very bottom. Minimal by design — no blurb, CTAs, or eyebrow.
+ * Homepage hero — light, immersive "liftoff" scene (Antigravity-inspired) built
+ * with Mehvano's own content and a teal accent. A faintly-grained light surface
+ * (.hero-light) behind a radiating burst of teal/slate/gray dashes fanning out
+ * from centre (HeroParticles); the CSS gradient is the instant, finished
+ * fallback (no-JS / reduced motion → static burst).
+ *
+ * HeroContent (client) adds the centered eyebrow → headline → subheadline →
+ * CTAs → scroll-cue choreography and the gentle scroll-exit. This server shell
+ * renders a complete, readable hero on its own.
  */
 export function Hero() {
   return (
-    <section className="hero-silver relative isolate flex min-h-screen w-full flex-col overflow-hidden">
-      {/* Animated background (client-only work; static gradient shows first) */}
-      <HeroCanvas />
+    <section className="hero-light relative isolate flex min-h-screen w-full flex-col overflow-hidden">
+      {/* Radiating dash-particle burst (client-only; static gradient shows first) */}
+      <HeroParticles />
 
-      {/* Bottom content: giant wordmark + scroll cue */}
-      <div className="relative mt-auto flex w-full flex-col items-center gap-10 px-6 pb-10">
-        <h1 className="w-full text-center font-display font-semibold leading-none text-slate-900/85">
-          <span className="block text-[13vw] tracking-[0.28em] sm:text-[12vw] lg:text-[10.5vw]">
-            <span className="pl-[0.28em]">MEHVANO</span>
-          </span>
-        </h1>
-
-        <a
-          href="#services"
-          className="flex flex-col items-center gap-2 text-slate-700/70 transition-colors hover:text-slate-900"
-        >
-          <span className="text-[0.7rem] font-medium uppercase tracking-[0.42em]">
-            Scroll down
-          </span>
-        </a>
-      </div>
+      {/* Centered foreground content (client motion) */}
+      <HeroContent />
     </section>
   );
 }

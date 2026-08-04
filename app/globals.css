@@ -35,10 +35,21 @@
   --color-charcoal: #1c2230;    /* cool near-black (gradient step)          */
   --color-graphite: #2b3446;    /* cool dark slate (gradient step)          */
 
-  /* ---- Accent (cool silver-blue) — readable light/dark tints ------------ */
-  --color-gold: #7f90aa;        /* Steel: base fills, icons, dots           */
-  --color-gold-bright: #aebccf; /* Silver: readable text/accents on dark    */
-  --color-gold-deep: #5a6a85;   /* Slate: readable accent text on light     */
+  /* ---- Accent (teal — matches the Antigravity-style hero) --------------- */
+  /* Legacy token names ("gold"); values are now the teal accent family so the
+     whole site (eyebrows, icons, links, dots, buttons) matches the hero.      */
+  --color-gold: #16b5a8;        /* Teal: base fills, icons, dots            */
+  --color-gold-bright: #35e0d0; /* Bright teal: readable accents on dark    */
+  --color-gold-deep: #0e8f86;   /* Deep teal: readable accent text on light */
+
+  /* ---- Cyan/teal accent (hero + highlights) — canonical teal names ------ */
+  --color-cyan: #35e0d0;        /* Bright teal                              */
+  --color-cyan-bright: #6ff3e6; /* Lighter teal: highlights / hover         */
+  --color-cyan-deep: #0e8f86;   /* Deep teal: readable accent text on light */
+
+  /* ---- Dark hero surface (Antigravity near-black) ----------------------- */
+  --color-void: #05070a;        /* Near-black hero base                      */
+  --color-void-soft: #0b0f16;   /* Slightly lifted near-black (cards/edges)  */
 
   /* ---- Foreground / text ------------------------------------------------ */
   --color-fg: #161a22;          /* cool Onyx: primary text                  */
@@ -134,6 +145,123 @@
 }
 
 /* ---------------------------------------------------------------------------
+ *  Motion system (Lenis smooth scroll + custom cursor + reveals)
+ *  See components/animation/*. All pieces self-disable under reduced motion
+ *  and on touch/coarse pointers; the rules below are cosmetic scaffolding only.
+ * ------------------------------------------------------------------------- */
+
+/* Lenis: required so smooth scrolling drives the whole document height. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Custom cursor — hide the native cursor site-wide only while active. The
+   class is added by CustomCursor.tsx (fine-pointer + no-reduced-motion only). */
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--color-ink);
+  mix-blend-mode: difference;
+  transition: opacity 0.2s ease;
+}
+.cursor-ring {
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid var(--color-ink);
+  background: rgba(19, 23, 32, 0.03);
+  backdrop-filter: invert(4%);
+  transition: opacity 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+/* Labelled states get a solid accent chip so the label reads clearly. */
+.cursor-ring[data-state="view"],
+.cursor-ring[data-state="open"],
+.cursor-ring[data-state="play"],
+.cursor-ring[data-state="drag"] {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  mix-blend-mode: normal;
+}
+.cursor-label {
+  color: var(--color-fg-inverse);
+  transition: opacity 0.2s ease;
+}
+
+/* Scroll progress bar — transform:scaleX driven, brand steel→silver gradient. */
+.scroll-progress-track {
+  background: transparent;
+}
+.scroll-progress-bar {
+  background: linear-gradient(90deg, var(--color-gold-deep), var(--color-gold-bright));
+  transition: transform 0.08s linear;
+}
+
+/* Refined desktop nav-link hover underline (grows from centre). Active pill
+   links already have a solid chip, so the underline only shows on inactive
+   links via the hover state. */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  height: 1.5px;
+  width: 0;
+  background: currentColor;
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: width 0.3s var(--ease-out-soft);
+}
+.nav-link:hover::after {
+  width: 40%;
+}
+.nav-link.bg-white::after {
+  display: none;
+}
+
+/* Interactive card hover — a subtle teal edge-glow on top of the existing
+   lift. Transform/opacity/border only (cheap enough for grids). */
+.tilt-card {
+  position: relative;
+}
+.tilt-card:hover {
+  border-color: color-mix(in srgb, var(--color-cyan-deep) 45%, var(--color-line));
+}
+
+/* Text-reveal masking — each token clips its rising inner span. Inline-block
+   so line boxes and wrapping behave exactly like normal text. */
+.reveal-text {
+  display: inline;
+}
+.reveal-text-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  /* A hair of padding so descenders/ascenders aren't clipped mid-glyph. */
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.reveal-text-inner {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* ---------------------------------------------------------------------------
  *  Reusable component-level utilities
  * ------------------------------------------------------------------------- */
 @layer components {
@@ -172,26 +300,46 @@
     color: transparent;
   }
 
-  /*
-   * HERO SHELL — warm dark base behind the animated 3D canvas. If the canvas
-   * fails to load or is disabled (reduced-motion / no-JS), this gradient alone
-   * still gives a finished, on-brand hero.
-   */
-  .hero-green {
-    background:
-      radial-gradient(60% 80% at 78% 88%, rgba(174, 188, 207, 0.35) 0%, rgba(90, 106, 133, 0.2) 34%, rgba(19, 23, 32, 0) 66%),
-      linear-gradient(135deg, #131720 0%, #1c2230 52%, #2b3446 100%);
+  /* Teal accent gradient for hero headline keywords (Antigravity-style). */
+  .text-gradient-cyan {
+    background: linear-gradient(96deg, var(--color-cyan-bright), var(--color-cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   /*
-   * HERO SILVER — cool light-blue "rippled water" shell for the RESADEX-style
-   * homepage hero. The animated sphere + ripple canvas sits on top; this
-   * gradient alone is the finished fallback (reduced-motion / no-JS).
+   * HERO LIGHT — bright, faintly-grained shell for the Antigravity-style
+   * homepage hero. The radiating dash-particle canvas (HeroParticles) sits on
+   * top; this alone is the finished fallback (reduced-motion / no-JS): a clean
+   * near-white surface with a soft cool vignette and a whisper of grain.
    */
-  .hero-silver {
+  .hero-light {
+    background-color: #fbfcfe;
+    background-image:
+      radial-gradient(58% 60% at 50% 46%, rgba(255, 255, 255, 0.9) 0%, rgba(240, 243, 248, 0.6) 45%, rgba(232, 235, 241, 0) 74%),
+      radial-gradient(120% 120% at 50% 120%, rgba(53, 224, 208, 0.06) 0%, rgba(255, 255, 255, 0) 55%);
+  }
+  /* Whisper of film grain so the flat white reads as a surface, not a void. */
+  .hero-light::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    background-image: radial-gradient(rgba(19, 23, 32, 0.05) 0.5px, transparent 0.5px);
+    background-size: 4px 4px;
+    -webkit-mask-image: radial-gradient(75% 75% at 50% 50%, #000 0%, transparent 82%);
+    mask-image: radial-gradient(75% 75% at 50% 50%, #000 0%, transparent 82%);
+  }
+
+  /* Light teal-tinted panel (home "By the numbers" tile) — matches the hero. */
+  .glow-teal {
     background:
-      radial-gradient(58% 62% at 50% 42%, rgba(226, 233, 242, 0.9) 0%, rgba(198, 210, 226, 0.55) 40%, rgba(170, 184, 205, 0) 72%),
-      linear-gradient(168deg, #c3cedd 0%, #aebccf 46%, #93a3bc 100%);
+      radial-gradient(90% 120% at 20% 12%, rgba(53, 224, 208, 0.16) 0%, rgba(53, 224, 208, 0) 55%),
+      radial-gradient(90% 120% at 88% 88%, rgba(14, 143, 134, 0.14) 0%, rgba(255, 255, 255, 0) 60%),
+      linear-gradient(160deg, #f4f7f8 0%, #eef2f3 48%, #e8edee 100%);
+    border: 1px solid var(--color-line);
   }
 
   /* Soft cool bloom on a LIGHT surface (secondary hero / about media). */
@@ -223,11 +371,10 @@
 }
 
 /* ---------------------------------------------------------------------------
- *  Hero animated SVG background (components/sections/HeroCanvas.tsx)
- *  Gradient-mesh blobs drift on their own loops behind a faint line network.
- *  All motion is GPU-composited transform/opacity — no per-frame JS. Motion is
- *  removed entirely under prefers-reduced-motion (block below is scoped to
- *  no-preference), leaving an elegant static frame.
+ *  Ambient animated backgrounds (drifting mesh blobs)
+ *  Reused by StatMesh (components/sections/StatMesh.tsx). GPU-composited
+ *  transform/opacity — no per-frame JS. Removed entirely under reduced motion
+ *  (this block is scoped to no-preference), leaving an elegant static frame.
  * ------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: no-preference) {
   .hb-blob {
@@ -240,44 +387,10 @@
   .hb-blob-3 { animation: hb-drift-3 19s var(--ease-out-soft) infinite alternate; }
   .hb-blob-4 { animation: hb-drift-1 24s var(--ease-out-soft) infinite alternate-reverse; }
 
-  .hb-lines path {
-    stroke-dasharray: 6 10;
-    animation: hb-flow 14s linear infinite;
+  /* Hero scroll-cue arrow — a soft continuous bob to invite scrolling. */
+  .hero-cue-dot {
+    animation: hero-cue-bob 2.4s ease-in-out infinite;
   }
-  .hb-node-1 { animation: hb-pulse 4.5s ease-in-out infinite; }
-  .hb-node-2 { animation: hb-pulse 5.5s ease-in-out infinite 0.6s; }
-  .hb-node-3 { animation: hb-pulse 6.5s ease-in-out infinite 1.2s; }
-
-  /* Levitating chrome sphere — bobs gently up and down. */
-  .hs-bob {
-    transform-box: view-box;
-    will-change: transform;
-    animation: hs-bob 5.5s ease-in-out infinite;
-  }
-  /* Shadow tightens/expands as the sphere rises and falls. */
-  .hs-shadow {
-    transform-box: fill-box;
-    transform-origin: center;
-    will-change: transform, opacity;
-    animation: hs-shadow 5.5s ease-in-out infinite;
-  }
-
-  /* Concentric ripple rings expand outward + fade, staggered into a wave. */
-  .hr-ring {
-    transform-box: fill-box;
-    transform-origin: center;
-    will-change: transform, opacity;
-    opacity: 0;
-    animation: hr-ring 8s ease-out infinite;
-  }
-  .hr-ring-0 { animation-delay: 0s; }
-  .hr-ring-1 { animation-delay: 1s; }
-  .hr-ring-2 { animation-delay: 2s; }
-  .hr-ring-3 { animation-delay: 3s; }
-  .hr-ring-4 { animation-delay: 4s; }
-  .hr-ring-5 { animation-delay: 5s; }
-  .hr-ring-6 { animation-delay: 6s; }
-  .hr-ring-7 { animation-delay: 7s; }
 
   /* Service-orbit rings spin; nodes counter-spin so glyphs stay upright. */
   .orbit-ring-outer { animation: orbit-spin 38s linear infinite; }
@@ -323,29 +436,9 @@
   from { transform: translate(0, 0) scale(0.95); opacity: 0.8; }
   to   { transform: translate(50px, 70px) scale(1.15); opacity: 1; }
 }
-@keyframes hb-flow {
-  to { stroke-dashoffset: -160; }
-}
-@keyframes hb-pulse {
-  0%, 100% { opacity: 0.15; }
-  50%      { opacity: 0.75; }
-}
-
-/* Chrome sphere + ripple motion */
-@keyframes hs-bob {
+@keyframes hero-cue-bob {
   0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-26px); }
-}
-@keyframes hs-shadow {
-  /* Sphere at rest (low) → shadow tight + dark; sphere up → wide + faint. */
-  0%, 100% { transform: scale(1); opacity: 0.5; }
-  50%      { transform: scale(1.28); opacity: 0.28; }
-}
-@keyframes hr-ring {
-  0%   { transform: scale(0.32); opacity: 0; }
-  10%  { opacity: 1; }
-  85%  { opacity: 0.5; }
-  100% { transform: scale(4.6); opacity: 0; }
+  50%      { transform: translateY(5px); }
 }
 
 /* ---------------------------------------------------------------------------
@@ -418,6 +511,18 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+  /* Motion system: force reveal text fully visible (no clipping mask) and
+     never hide the native cursor. Belt-and-braces alongside the JS guards. */
+  .reveal-text-mask {
+    overflow: visible;
+  }
+  .reveal-text-inner {
+    transform: none !important;
+  }
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: auto !important;
   }
 }
 

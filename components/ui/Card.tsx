@@ -10,6 +10,8 @@ type CardProps = {
   tone?: "paper" | "cream" | "sand" | "ink" | "glass";
   padding?: "none" | "sm" | "md" | "lg";
   interactive?: boolean;
+  /** Custom-cursor hint (e.g. "view" | "open") — read by CustomCursor. */
+  "data-cursor"?: string;
 };
 
 const tones = {
@@ -34,6 +36,7 @@ export function Card({
   tone = "paper",
   padding = "md",
   interactive,
+  "data-cursor": dataCursor,
 }: CardProps) {
   const classes = cn(
     "rounded-2xl transition-all duration-300 ease-out",
@@ -46,10 +49,10 @@ export function Card({
 
   if (href) {
     return (
-      <Link href={href} className={cn(classes, "block focus:outline-none")}>
+      <Link href={href} data-cursor={dataCursor} className={cn(classes, "block focus:outline-none")}>
         {children}
       </Link>
     );
   }
-  return <div className={classes}>{children}</div>;
+  return <div data-cursor={dataCursor} className={classes}>{children}</div>;
 }

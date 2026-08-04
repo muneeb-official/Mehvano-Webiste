@@ -1,13 +1,13 @@
 "use client";
 
 import type { CSSProperties, ElementType, ReactNode } from "react";
-
-export type RevealVariant = "up" | "down" | "left" | "right" | "scale" | "fade";
+import { RevealSection, type RevealVariant } from "@/components/animation/RevealSection";
 
 type RevealProps = {
   children: ReactNode;
   as?: ElementType;
   variant?: RevealVariant;
+  /** Delay in ms (legacy call sites pass stagger(i) in ms) — converted to s. */
   delay?: number;
   className?: string;
   once?: boolean;
@@ -16,17 +16,32 @@ type RevealProps = {
 };
 
 /**
- * Lightweight static wrapper. The site's scroll motion is now handled at the
- * section level by <ScrollSlide> (see Section.tsx), which slides whole sections
- * in from alternating sides as you scroll. Reveal stays a plain wrapper so its
- * existing call sites keep working without double-animating inside a sliding
- * section. The animation-related props (variant/delay/once/amount) are accepted
- * for compatibility but intentionally have no effect.
+ * Scroll-triggered reveal wrapper. Now backed by the unified GSAP reveal system
+ * (components/animation/RevealSection) — it replaces the old ScrollSlide-based
+ * approach. The public API is unchanged so every existing call site keeps
+ * working; `delay` is still accepted in MILLISECONDS (matching lib/utils
+ * `stagger()`), `amount` is accepted for compatibility but no longer needed.
+ * Respects reduced motion and ships content visible for no-JS.
  */
-export function Reveal({ children, as: Tag = "div", className, style }: RevealProps) {
+export function Reveal({
+  children,
+  as = "div",
+  variant = "up",
+  delay = 0,
+  className,
+  once = true,
+  style,
+}: RevealProps) {
   return (
-    <Tag className={className} style={style}>
+    <RevealSection
+      as={as}
+      variant={variant}
+      delay={delay / 1000}
+      once={once}
+      className={className}
+      style={style}
+    >
       {children}
-    </Tag>
+    </RevealSection>
   );
 }

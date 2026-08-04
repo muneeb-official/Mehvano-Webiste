@@ -74,17 +74,16 @@ export default function HomePage() {
       </Section>
 
       {/* Services — Solutions Built to Accelerate Your Growth */}
-      <Section id="services" tone="onyx" spacing="md" slide={false}>
-        <div className="flex flex-wrap items-end justify-between gap-6">
+      <Section id="services" tone="cream" spacing="md" slide={false}>
+        <Reveal variant="up" className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
             eyebrow="Services"
             title="Solutions built to accelerate your growth"
             description="From bedside care to code, from your next home to your next hire — expert teams that work the way you need them to."
-            tone="inverse"
             className="max-w-2xl"
           />
-          <Button href="/services" variant="light">See all services</Button>
-        </div>
+          <Button href="/services" variant="primary">See all services</Button>
+        </Reveal>
         <div className="mt-12">
           <ServiceGrid columns={3} />
         </div>
@@ -108,28 +107,29 @@ export default function HomePage() {
       </Section>
 
       {/* Testimonials */}
-      <Section tone="onyx" spacing="md" slide={false}>
-        <SectionHeading
-          eyebrow="Testimonials"
-          title="Reviews that speak volumes"
-          description="Hear how our services have transformed operations, improved outcomes, and driven growth."
-          tone="inverse"
-        />
+      <Section tone="paper" spacing="md" slide={false}>
+        <Reveal variant="up">
+          <SectionHeading
+            eyebrow="Testimonials"
+            title="Reviews that speak volumes"
+            description="Hear how our services have transformed operations, improved outcomes, and driven growth."
+          />
+        </Reveal>
         <div className="mt-12">
           <Testimonials items={TESTIMONIALS} />
         </div>
       </Section>
 
       {/* Insights & Updates */}
-      <Section tone="paper" spacing="md" slide={false}>
-        <div className="flex flex-col items-center text-center">
+      <Section tone="cream" spacing="md" slide={false}>
+        <Reveal variant="up" className="flex flex-col items-center text-center">
           <SectionHeading
             eyebrow="Blog"
             title="Insights & updates"
             description="Expert articles, case studies, and hyperlocal intel to help you make smarter decisions."
             align="center"
           />
-        </div>
+        </Reveal>
         <div className="mt-12">
           <InsightsGrid articles={featured} />
         </div>

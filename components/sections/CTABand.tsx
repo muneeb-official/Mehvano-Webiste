@@ -2,6 +2,7 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { ScrollSlide } from "@/components/ui/ScrollSlide";
+import { MagneticButton } from "@/components/animation";
 import { COMPANY } from "@/lib/constants";
 
 type CTABandProps = {
@@ -37,9 +38,11 @@ export function CTABand({
         {footnote ? <p className="mt-3 text-sm text-white/55">{footnote}</p> : null}
       </div>
       <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-        <Button href={primary.href} variant="light" size="lg" icon="arrow-up-right" iconCircle>
-          {primary.label}
-        </Button>
+        <MagneticButton cursor="open">
+          <Button href={primary.href} variant="light" size="lg" icon="arrow-up-right" iconCircle>
+            {primary.label}
+          </Button>
+        </MagneticButton>
         <Button href={secondary.href} variant="glass" size="lg">
           {secondary.label}
         </Button>

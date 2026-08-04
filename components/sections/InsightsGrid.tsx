@@ -26,7 +26,7 @@ export function InsightsGrid({ articles }: InsightsGridProps) {
     <div className="grid gap-8 md:grid-cols-3">
       {articles.map((article, i) => (
         <Reveal key={article.slug} variant="up" delay={stagger(i)} className="h-full">
-          <Link href={hrefFor(article)} className="group flex h-full flex-col gap-4">
+          <Link href={hrefFor(article)} data-cursor="view" className="group flex h-full flex-col gap-4">
             <div className="flex flex-col gap-2">
               <span className="inline-flex items-center gap-2 text-xs text-fg-subtle">
                 <Icon name="clock" className="h-3.5 w-3.5" />
