@@ -51,6 +51,9 @@ export function Footer() {
                 </a>
               ))}
             </div>
+            <p className="text-xs text-fg-inverse-muted/70">
+              © {year} {COMPANY.legalName}. All rights reserved.
+            </p>
           </div>
 
           {/* Nav columns */}
@@ -80,11 +83,11 @@ export function Footer() {
         {/* Legal / compliance */}
         <div className="mt-14 border-t border-white/10 pt-8">
           <div className="flex flex-col gap-4 text-xs leading-relaxed text-fg-inverse-muted/80">
-            <p>{LEGAL.companyLine}</p>
-            <p>{LEGAL.brokerageLine}</p>
             <p>
-              {LEGAL.equalHousing} {LEGAL.idxDisclaimer} {LEGAL.disclaimer}
+              {LEGAL.companyLine} WhatsApp Business ID: {COMPANY.whatsappBusinessId}.
             </p>
+            {/* Real-estate compliance lines hidden while that division is offline. */}
+            <p>{LEGAL.disclaimer}</p>
             <div className="flex flex-col justify-between gap-2 pt-2 sm:flex-row">
               <span>
                 © {year} {SITE.brand}. All rights reserved.

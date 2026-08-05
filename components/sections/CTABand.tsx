@@ -21,7 +21,7 @@ type CTABandProps = {
 export function CTABand({
   eyebrow = "Let's talk",
   title = "Ready to get started?",
-  text = "One conversation is all it takes. Tell us what you need — care, technology, real estate, or business support — and we'll point you to the right team. We respond fast, usually within minutes.",
+  text = "One conversation is all it takes. Tell us what you need — care, technology, or business support — and we'll point you to the right team. We respond fast, usually within minutes.",
   primary = { label: "Talk to Us", href: "/contact" },
   secondary = { label: "Explore Services", href: "/services" },
   footnote = `${COMPANY.legalName} · ${COMPANY.phone}`,

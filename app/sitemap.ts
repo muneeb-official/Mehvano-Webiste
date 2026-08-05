@@ -1,8 +1,11 @@
 import type { MetadataRoute } from "next";
-import { SITE, ZIPS } from "@/lib/constants";
+import { SITE } from "@/lib/constants";
 import { SERVICES } from "@/lib/services";
-import { getAllArticles, hrefFor } from "@/lib/cms";
 
+// NOTE: Real-estate & portfolio routes (home-value, neighborhoods,
+// market-reports, guides, portfolio, per-zip pages, and real-estate article
+// URLs) are omitted while that division is offline. Restore them here — plus
+// the ZIPS / getAllArticles enumerations — when it relaunches.
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = SITE.url;
   const lastModified = new Date();
@@ -10,11 +13,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${base}/`, lastModified, changeFrequency: "weekly", priority: 1 },
     { url: `${base}/services`, lastModified, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${base}/home-value`, lastModified, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${base}/neighborhoods`, lastModified, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/market-reports`, lastModified, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${base}/guides`, lastModified, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/portfolio`, lastModified, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/about`, lastModified, changeFrequency: "yearly", priority: 0.6 },
     { url: `${base}/contact`, lastModified, changeFrequency: "yearly", priority: 0.6 },
   ];
@@ -26,19 +24,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  const zipRoutes: MetadataRoute.Sitemap = ZIPS.map((z) => ({
-    url: `${base}/home-value/${z.slug}`,
-    lastModified,
-    changeFrequency: "monthly",
-    priority: 0.7,
-  }));
-
-  const articleRoutes: MetadataRoute.Sitemap = getAllArticles().map((a) => ({
-    url: `${base}${hrefFor(a)}`,
-    lastModified: new Date(a.updated),
-    changeFrequency: a.type === "market-report" ? "weekly" : "monthly",
-    priority: 0.7,
-  }));
-
-  return [...staticRoutes, ...serviceRoutes, ...zipRoutes, ...articleRoutes];
+  return [...staticRoutes, ...serviceRoutes];
 }

@@ -18,7 +18,7 @@ export const SITE = {
   url: "https://mehvano.com",
   tagline: "Multi-service solutions for Maryland businesses & families",
   description:
-    "Mehvano LLC — one trusted Maryland partner for medical & nursing care, AI services, real estate, IT & software, business consulting, staffing, and digital marketing.",
+    "Mehvano LLC — one trusted Maryland partner for medical & nursing care, AI services, IT & software, business consulting, staffing, and digital marketing.",
   locale: "en_US",
 } as const;
 
@@ -31,15 +31,17 @@ export const COMPANY = {
   founded: "2024",
   phone: "(410) 555-0142",
   phoneHref: "tel:+14105550142",
-  email: "hello@mehvano.com",
-  emailHref: "mailto:hello@mehvano.com",
+  email: "mehvish.aslam@hotmail.com",
+  emailHref: "mailto:mehvish.aslam@hotmail.com",
+  /** WhatsApp Business account identifier (NOT a legal license/registration #). */
+  whatsappBusinessId: "105325809",
   addressLocality: "Severn",
   addressRegion: "MD",
   postalCode: "21144",
   streetAddress: "",
   // TODO: confirm registered LLC address before launch.
   description:
-    "Mehvano LLC is a Maryland-registered, multi-service company delivering healthcare staffing, AI solutions, real estate, technology, and business services to clients across the state.",
+    "Mehvano LLC is a Maryland-registered, multi-service company delivering healthcare staffing, AI solutions, technology, and business services to clients across the state.",
 } as const;
 
 export const AGENT = {
@@ -91,11 +93,11 @@ export const getZipBySlug = (slug: string): Zip | undefined =>
   ZIPS.find((z) => z.slug === slug);
 
 /** Primary navigation. Services is the hub; the rest are company pages. */
+/* NOTE: Real-estate & portfolio links are temporarily hidden (to be restored
+   when that division relaunches). See also FOOTER_NAV, Header, sitemap. */
 export const NAV_LINKS = [
   { label: "Services", href: "/services" },
-  { label: "Real Estate", href: "/home-value" },
   { label: "About", href: "/about" },
-  { label: "Portfolio", href: "/portfolio" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
@@ -105,26 +107,15 @@ export const FOOTER_NAV = [
     links: [
       { label: "Medical & Nursing", href: "/services/medical-nursing" },
       { label: "AI Services", href: "/services/ai-services" },
-      { label: "Real Estate", href: "/services/real-estate" },
       { label: "IT & Software", href: "/services/it-software" },
       { label: "Business Consulting", href: "/services/business-consulting" },
       { label: "All services", href: "/services" },
     ],
   },
   {
-    title: "Real Estate",
-    links: [
-      { label: "What's My Home Worth?", href: "/home-value" },
-      { label: "Neighborhood Guides", href: "/neighborhoods" },
-      { label: "Market Reports", href: "/market-reports" },
-      { label: "Buyer & Seller Guides", href: "/guides" },
-    ],
-  },
-  {
     title: "Company",
     links: [
       { label: "About Mehvano", href: "/about" },
-      { label: "Portfolio", href: "/portfolio" },
       { label: "Contact", href: "/contact" },
     ],
   },
@@ -138,13 +129,13 @@ export const SOCIALS = [
 
 /** Social-proof stats shown in the hero + about page. */
 export const STATS = [
-  { value: "7", suffix: " services", label: "One trusted partner" },
+  { value: "6", suffix: " services", label: "One trusted partner" },
   { value: "MD", suffix: "", label: "Serving all of Maryland" },
   { value: "<5", suffix: " min", label: "Median response time" },
 ] as const;
 
 /** Trust/credibility strip. */
-export const PARTNERS = ["Maryland LLC", "Licensed & Insured", "Bright MLS", "Equal Opportunity", "24/7 Support"] as const;
+export const PARTNERS = ["Maryland LLC", "Licensed & Insured", "Equal Opportunity", "24/7 Support"] as const;
 
 /**
  * Partner / client wordmarks shown in the hero logo strip (reference layout).
@@ -167,7 +158,7 @@ export const PARTNER_LOGOS = [
 export const IMPACT_STATS = [
   { value: "98%", label: "Client satisfaction" },
   { value: "500+", label: "Projects & placements delivered" },
-  { value: "7", label: "Services under one roof" },
+  { value: "6", label: "Services under one roof" },
 ] as const;
 
 /**
@@ -206,7 +197,7 @@ export type TeamMember = {
 };
 
 export const TEAM: TeamMember[] = [
-  { name: "Mehvish Aslam", role: "Founder & Real Estate Lead" },
+  { name: "Mehvish Aslam", role: "Founder & Managing Director" },
   { name: "A. Rahman", role: "Director, Medical & Nursing" },
   { name: "S. Malik", role: "Head of AI & Technology" },
   { name: "J. Carter", role: "Business Services Lead" },
@@ -229,6 +220,9 @@ export const STOCK_IMAGES = [
 export const stockImage = (index: number) => STOCK_IMAGES[index % STOCK_IMAGES.length];
 
 /** Legal / compliance strings surfaced in the footer. */
+/* NOTE: Real-estate compliance lines (equalHousing / idxDisclaimer /
+   brokerageLine) are hidden while the real-estate division is offline. They are
+   kept here (unused) so they can be restored with the division. */
 export const LEGAL = {
   /** Company-wide line shown site-wide in the footer. */
   companyLine: `${COMPANY.legalName} is a Maryland-registered limited liability company. Services are provided by licensed and insured professionals in their respective fields.`,

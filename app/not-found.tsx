@@ -20,7 +20,7 @@ export default function NotFound() {
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Button href="/" icon="arrow-up-right">Back home</Button>
-            <Button href="/neighborhoods" variant="outline">Browse neighborhoods</Button>
+            <Button href="/services" variant="outline">Browse services</Button>
           </div>
         </Container>
       </main>

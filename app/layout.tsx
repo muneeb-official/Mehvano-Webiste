@@ -4,7 +4,9 @@ import { fontVariables } from "./fonts";
 import { SITE } from "@/lib/constants";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { MotionRoot } from "@/components/animation";
-import { organizationSchema, realEstateAgentSchema, websiteSchema } from "@/lib/schema";
+// realEstateAgentSchema is temporarily omitted while the real-estate division
+// is offline — re-add it (import + in the JsonLd data array below) to restore.
+import { organizationSchema, websiteSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -20,7 +22,6 @@ export const metadata: Metadata = {
     "home health care Maryland",
     "AI services Maryland",
     "AI automation for small business",
-    "Maryland real estate agent",
     "IT and software development Maryland",
     "business consulting LLC formation Maryland",
     "digital marketing agency Maryland",
@@ -73,7 +74,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
         <MotionRoot>{children}</MotionRoot>
-        <JsonLd data={[organizationSchema(), websiteSchema(), realEstateAgentSchema()]} />
+        <JsonLd data={[organizationSchema(), websiteSchema()]} />
       </body>
     </html>
   );

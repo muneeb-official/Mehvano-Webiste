@@ -10,10 +10,12 @@ import { ServiceOrbit } from "@/components/sections/ServiceOrbit";
 import { StatMesh } from "@/components/sections/StatMesh";
 import { StatTrio } from "@/components/sections/StatTrio";
 import { WhyChoose } from "@/components/sections/WhyChoose";
-import { InsightsGrid } from "@/components/sections/InsightsGrid";
 import { Testimonials, type Testimonial } from "@/components/sections/Testimonials";
 import { CTABand } from "@/components/sections/CTABand";
-import { getAllArticles } from "@/lib/cms";
+// NOTE: the "Insights & updates" blog section is temporarily hidden — all
+// current articles are real-estate buyer/seller guides. Restore the
+// InsightsGrid + getAllArticles imports and the section below when the
+// real-estate division (and general blog content) returns.
 
 // NOTE: placeholder testimonials — replace with real, verifiable reviews before launch.
 const TESTIMONIALS: Testimonial[] = [
@@ -28,15 +30,13 @@ const TESTIMONIALS: Testimonial[] = [
     detail: "Small business owners · Ellicott City, MD",
   },
   {
-    quote: "They helped us form our LLC, set up the books, and then sold our old office building. A genuine one-stop shop.",
+    quote: "They helped us form our LLC, set up the books, and get our first hires in the door. A genuine one-stop shop.",
     name: "Marcus T.",
     detail: "Founder · Pasadena, MD",
   },
 ];
 
 export default function HomePage() {
-  const featured = getAllArticles().slice(0, 3);
-
   return (
     <>
       <Hero />
@@ -52,10 +52,10 @@ export default function HomePage() {
               Powered by people.
             </h2>
             <p className="max-w-xl text-base leading-relaxed text-fg-muted sm:text-lg">
-              Mehvano LLC brings healthcare, technology, real estate, and business
-              services together under one trusted, Maryland-registered roof. With
-              licensed specialists in every field, we help families and businesses
-              adapt, scale, and thrive — without juggling a dozen vendors.
+              Mehvano LLC brings healthcare, technology, and business services
+              together under one trusted, Maryland-registered roof. With licensed
+              specialists in every field, we help families and businesses adapt,
+              scale, and thrive — without juggling a dozen vendors.
             </p>
             <div>
               <Button href="/about" variant="outline">Learn more</Button>
@@ -79,7 +79,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Services"
             title="Solutions built to accelerate your growth"
-            description="From bedside care to code, from your next home to your next hire — expert teams that work the way you need them to."
+            description="From bedside care to code, from your books to your next hire — expert teams that work the way you need them to."
             className="max-w-2xl"
           />
           <Button href="/services" variant="primary">See all services</Button>
@@ -120,23 +120,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* Insights & Updates */}
-      <Section tone="cream" spacing="md" slide={false}>
-        <Reveal variant="up" className="flex flex-col items-center text-center">
-          <SectionHeading
-            eyebrow="Blog"
-            title="Insights & updates"
-            description="Expert articles, case studies, and hyperlocal intel to help you make smarter decisions."
-            align="center"
-          />
-        </Reveal>
-        <div className="mt-12">
-          <InsightsGrid articles={featured} />
-        </div>
-        <div className="mt-10 flex justify-center">
-          <Button href="/guides" variant="outline">View all</Button>
-        </div>
-      </Section>
+      {/* Insights & Updates — temporarily hidden (real-estate blog content). */}
 
       {/* CTA showcase band */}
       <Container size="wide" className="pb-16 pt-4 sm:pb-24">
@@ -145,7 +129,7 @@ export default function HomePage() {
             slide={false}
             eyebrow="Work with us"
             title="Ready to take your business or family to the next level?"
-            text="With licensed specialists across healthcare, AI, real estate, and business services, we help you adapt, scale, and thrive. Tell us what you need — we'll point you to the right team."
+            text="With licensed specialists across healthcare, AI, technology, and business services, we help you adapt, scale, and thrive. Tell us what you need — we'll point you to the right team."
             primary={{ label: "Get a Free Consultation", href: "/contact" }}
             secondary={{ label: "Explore Services", href: "/services" }}
           />

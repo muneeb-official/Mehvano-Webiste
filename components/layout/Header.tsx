@@ -22,12 +22,13 @@ import { useScrollDirection } from "@/hooks/useScrollDirection";
  *   - Mobile drawer staggers its links in and locks background scroll while
  *     open; scroll is restored on close.
  */
+// NOTE: "For clients" (/portfolio) and "Blog" (/guides) are temporarily hidden
+// while the real-estate division is offline — restore when it relaunches.
 const PILL_LINKS = [
   { label: "Home", href: "/" },
   { label: "About us", href: "/about" },
   { label: "Explore", href: "/services" },
-  { label: "For clients", href: "/portfolio" },
-  { label: "Blog", href: "/guides" },
+  { label: "Contact", href: "/contact" },
 ] as const;
 
 export function Header() {

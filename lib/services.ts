@@ -94,31 +94,9 @@ export const SERVICES: Service[] = [
     image: stockImage(1),
     ctaLabel: "Explore AI solutions",
   },
-  {
-    slug: "real-estate",
-    name: "Real Estate",
-    title: "Real Estate Services",
-    icon: "home",
-    tagline: "Buy, sell, and invest with a hyperlocal Maryland expert.",
-    summary:
-      "Full-service residential real estate for Anne Arundel and Howard County — free home valuations, neighborhood intel, and end-to-end buying and selling support.",
-    overview:
-      "Our real estate division helps Maryland families buy with confidence and sell for more — backed by genuine, block-by-block knowledge of Severn, Pasadena, and Ellicott City. Get a free, human-reviewed home valuation, dig into hyperlocal market reports, and work with a REALTOR® who answers in minutes, not days.",
-    offerings: [
-      { title: "Buying a home", text: "New listings matched to your search, expert tours, and offers structured to compete — not overpay." },
-      { title: "Selling a home", text: "A real valuation from current comps, a pricing plan, and modern marketing that gets you found." },
-      { title: "Free home valuation", text: "A human-reviewed estimate for your exact neighborhood — not a generic online guess." },
-      { title: "Neighborhood & market intel", text: "Hyperlocal guides and monthly market reports for the areas we serve." },
-    ],
-    highlights: [
-      { title: "Genuinely hyperlocal", text: "We know Severn, Pasadena, and Ellicott City block by block." },
-      { title: "Fast, human responses", text: "You hear back in minutes and always talk to a real person." },
-      { title: "Priced with real data", text: "Every valuation is built from current comps and reviewed by a human." },
-    ],
-    image: stockImage(2),
-    externalHref: "/home-value",
-    ctaLabel: "What's my home worth?",
-  },
+  // NOTE: the "real-estate" service is temporarily removed while that division
+  // is offline. Restore this object (slug: "real-estate", externalHref:
+  // "/home-value") to bring the service card + detail page back.
   {
     slug: "it-software",
     name: "IT & Software",

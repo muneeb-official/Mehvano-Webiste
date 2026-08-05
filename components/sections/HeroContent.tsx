@@ -22,7 +22,7 @@ import { cn } from "@/lib/utils";
  */
 const HEADLINE_LINES = [
   ["One", "trusted", "partner"],
-  ["for", "care,", "tech", "&", "realty."],
+  ["for", "care,", "tech", "&", "growth."],
 ];
 
 export function HeroContent() {
@@ -73,7 +73,7 @@ export function HeroContent() {
       </span>
 
       <h1 className="font-display text-4xl font-semibold leading-[1.04] tracking-tight text-ink sm:text-6xl lg:text-[4.75rem]">
-        <span className="sr-only">One trusted partner for care, tech &amp; realty.</span>
+        <span className="sr-only">One trusted partner for care, tech &amp; growth.</span>
         {HEADLINE_LINES.map((line, li) => (
           <span key={li} aria-hidden className="flex flex-wrap justify-center overflow-hidden">
             {line.map((word, wi) => (
@@ -84,7 +84,7 @@ export function HeroContent() {
                   wi < line.length - 1 && "mr-[0.28em]"
                 )}
               >
-                {word === "care," || word === "tech" || word === "realty." ? (
+                {word === "care," || word === "tech" || word === "growth." ? (
                   <span className="text-gradient-cyan">{word}</span>
                 ) : (
                   word
@@ -96,8 +96,8 @@ export function HeroContent() {
       </h1>
 
       <p className="hero-sub max-w-xl text-base leading-relaxed text-fg-muted sm:text-lg">
-        Healthcare, technology, real estate, and business services — Maryland-registered
-        specialists under one roof. Adapt, scale, and thrive without juggling a dozen vendors.
+        Healthcare, technology, and business services — Maryland-registered specialists
+        under one roof. Adapt, scale, and thrive without juggling a dozen vendors.
       </p>
 
       <div className="mt-2 flex flex-col items-center gap-3 sm:flex-row">
