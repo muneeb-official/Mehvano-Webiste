@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "./Logo";
 import { Icon, type IconName } from "@/components/ui/Icon";
-import { COMPANY, FOOTER_NAV, LEGAL, SITE, SOCIALS } from "@/lib/constants";
+import { COMPANY, FOOTER_NAV, LEGAL, SERVICE_AREA, SITE, SOCIALS } from "@/lib/constants";
 
 const socialIcon: Record<string, IconName> = {
   Instagram: "instagram",
@@ -24,17 +24,13 @@ export function Footer() {
               {SITE.description}
             </p>
             <div className="flex flex-col gap-2 text-sm">
-              <a href={COMPANY.phoneHref} className="inline-flex items-center gap-2.5 text-fg-inverse-muted transition-colors hover:text-fg-inverse">
-                <Icon name="phone" className="h-4 w-4 text-gold-bright" />
-                {COMPANY.phone}
-              </a>
               <a href={COMPANY.emailHref} className="inline-flex items-center gap-2.5 text-fg-inverse-muted transition-colors hover:text-fg-inverse">
                 <Icon name="mail" className="h-4 w-4 text-gold-bright" />
                 {COMPANY.email}
               </a>
               <span className="inline-flex items-center gap-2.5 text-fg-inverse-muted">
                 <Icon name="map-pin" className="h-4 w-4 text-gold-bright" />
-                {COMPANY.addressLocality}, {COMPANY.addressRegion} · Serving all of Maryland
+                {SERVICE_AREA.coverage}
               </span>
             </div>
             <div className="flex gap-2">

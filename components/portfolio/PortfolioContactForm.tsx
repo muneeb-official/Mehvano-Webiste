@@ -37,14 +37,14 @@ export function PortfolioContactForm() {
 
       if (!res.ok) {
         setStatus("error");
-        setMessage(json.error ?? "Something went wrong. Please try again or call me directly.");
+        setMessage(json.error ?? "Something went wrong. Please try again or email us directly.");
         return;
       }
       setStatus("success");
       form.reset();
     } catch {
       setStatus("error");
-      setMessage("Network error. Please try again or call me directly.");
+      setMessage("Network error. Please try again or email us directly.");
     }
   }
 

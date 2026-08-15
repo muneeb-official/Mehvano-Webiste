@@ -85,10 +85,10 @@ export function ArticlePage({ article }: { article: Article }) {
               </p>
               <div className="mt-5 flex flex-col gap-2">
                 <Button href="/contact" className="w-full" icon="arrow-up-right">
-                  Book a call
+                  Get in touch
                 </Button>
-                <Button href={AGENT.phoneHref} variant="outline" className="w-full">
-                  Call {AGENT.phone}
+                <Button href={AGENT.emailHref} variant="outline" className="w-full">
+                  Email {AGENT.email}
                 </Button>
               </div>
             </Reveal>

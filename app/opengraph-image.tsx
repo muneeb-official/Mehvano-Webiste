@@ -55,7 +55,7 @@ export default function OpengraphImage() {
 
         <div style={{ display: "flex", flexDirection: "column" }}>
           <span style={{ fontSize: 20, letterSpacing: 3, color: "#aebccf", textTransform: "uppercase" }}>
-            Serving all of Maryland
+            Serving the United States
           </span>
           <span
             style={{

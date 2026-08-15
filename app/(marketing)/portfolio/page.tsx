@@ -472,12 +472,6 @@ export default function PortfolioPage() {
                 </span>
                 {AGENT.email}
               </a>
-              <a href={AGENT.phoneHref} className="flex items-center gap-3 font-medium text-black hover:text-[#c07f16]">
-                <span className="grid h-8 w-8 place-items-center rounded-full bg-[#f3ede2] text-[#c07f16]">
-                  <Icon name="phone" className="h-4 w-4" />
-                </span>
-                {AGENT.phone}
-              </a>
             </div>
           </div>
 

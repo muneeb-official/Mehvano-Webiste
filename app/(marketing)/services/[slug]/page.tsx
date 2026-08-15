@@ -15,7 +15,7 @@ import { CTABand } from "@/components/sections/CTABand";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
-import { SITE } from "@/lib/constants";
+import { SERVICE_AREA, SITE } from "@/lib/constants";
 import { SERVICES, getServiceBySlug, serviceHref } from "@/lib/services";
 import { stagger } from "@/lib/utils";
 
@@ -178,7 +178,7 @@ export default async function ServiceDetailPage({ params }: Params) {
             description: service.summary,
             serviceType: service.name,
             url: `${SITE.url}/services/${service.slug}`,
-            areaServed: { "@type": "State", name: "Maryland" },
+            areaServed: { "@type": "Country", name: SERVICE_AREA.country },
             provider: { "@type": "Organization", name: SITE.brand, url: SITE.url },
           },
         ]}

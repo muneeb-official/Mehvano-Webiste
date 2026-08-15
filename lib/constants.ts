@@ -1,6 +1,9 @@
 /**
- * BUSINESS CONSTANTS — single source of truth for NAP (Name/Address/Phone),
- * service area, navigation, and social profiles.
+ * BUSINESS CONSTANTS — single source of truth for name, email, service area,
+ * navigation, and social profiles.
+ *
+ * NOTE: the business is contacted by email only — no public phone number is
+ * published anywhere on the site (forms, footer, contact page, or schema).
  *
  * Entity clarity (report §9.1) depends on this data being identical everywhere,
  * so every component + JSON-LD schema reads from here. Update once, propagates
@@ -16,23 +19,24 @@ export const SITE = {
   brandShort: "Mehvano",
   /** Canonical production URL. */
   url: "https://mehvano.com",
-  tagline: "Multi-service solutions for Maryland businesses & families",
+  tagline: "Multi-service solutions for businesses & families across the United States",
   description:
-    "Mehvano LLC — one trusted Maryland partner for medical & nursing care, AI services, IT & software, business consulting, staffing, and digital marketing.",
+    "Mehvano LLC — one trusted nationwide partner for medical & nursing care, AI services, IT & software, business consulting, staffing, and digital marketing.",
   locale: "en_US",
 } as const;
 
 /**
- * The LLC entity itself — NAP (Name / Address / Phone) for the whole company.
+ * The LLC entity itself — name / address / email for the whole company.
  * This is the single source of truth for company-wide contact details.
+ *
+ * Email is the only published contact channel; there is intentionally no
+ * `phone` field here, so nothing on the site can render one.
  */
 export const COMPANY = {
   legalName: "Mehvano LLC",
   founded: "2024",
-  phone: "(410) 555-0142",
-  phoneHref: "tel:+14105550142",
-  email: "mehvish.aslam@hotmail.com",
-  emailHref: "mailto:mehvish.aslam@hotmail.com",
+  email: "info@mehvano.com",
+  emailHref: "mailto:info@mehvano.com",
   /** WhatsApp Business account identifier (NOT a legal license/registration #). */
   whatsappBusinessId: "105325809",
   addressLocality: "Severn",
@@ -41,7 +45,7 @@ export const COMPANY = {
   streetAddress: "",
   // TODO: confirm registered LLC address before launch.
   description:
-    "Mehvano LLC is a Maryland-registered, multi-service company delivering healthcare staffing, AI solutions, technology, and business services to clients across the state.",
+    "Mehvano LLC is a multi-service company delivering healthcare staffing, AI solutions, technology, and business services to clients across the United States.",
 } as const;
 
 export const AGENT = {
@@ -51,25 +55,31 @@ export const AGENT = {
   licenseNumber: "5012582",
   // TODO: confirm with broker before launch — the broker legally holds the license.
   brokerage: "Brokerage Name, LLC",
-  brokeragePhone: "(410) 000-0000",
-  // TODO: replace placeholders with real published contact details.
-  phone: "(410) 555-0142",
-  phoneHref: "tel:+14105550142",
-  email: "hello@homesbymehvish.com",
-  emailHref: "mailto:hello@homesbymehvish.com",
+  email: "info@mehvano.com",
+  emailHref: "mailto:info@mehvano.com",
   headshot: "/agent/mehvish-aslam.jpg",
   bio: "Mehvish Aslam is a Maryland REALTOR® serving buyers and sellers across Anne Arundel and Howard County — with deep local knowledge of Severn, Pasadena, and Ellicott City. She pairs hometown expertise with modern, data-driven marketing so clients move with clarity and confidence.",
 } as const;
 
+/**
+ * Company-wide service area. Mehvano serves clients nationwide across the
+ * United States — this is the single source of truth for coverage copy and
+ * schema.org `areaServed`.
+ */
 export const SERVICE_AREA = {
   /** Real-estate division still specializes in these two counties. */
   counties: ["Anne Arundel County", "Howard County"],
   state: "MD",
   stateName: "Maryland",
+  /** Country served, used in schema areaServed + coverage copy. */
+  country: "United States",
+  countryCode: "US",
   /** Cities beyond the core zips, used in schema areaServed + copy. */
   extendedCities: ["Odenton", "Annapolis", "Severna Park"],
   /** Company-wide coverage line for the multi-service LLC. */
-  coverage: "Serving clients statewide across Maryland",
+  coverage: "Serving clients nationwide across the United States",
+  /** Short form for badges, stat strips, and inline copy. */
+  short: "United States",
 } as const;
 
 export type Zip = {
@@ -130,12 +140,12 @@ export const SOCIALS = [
 /** Social-proof stats shown in the hero + about page. */
 export const STATS = [
   { value: "6", suffix: " services", label: "One trusted partner" },
-  { value: "MD", suffix: "", label: "Serving all of Maryland" },
+  { value: "US", suffix: "", label: "Serving the United States" },
   { value: "<5", suffix: " min", label: "Median response time" },
 ] as const;
 
 /** Trust/credibility strip. */
-export const PARTNERS = ["Maryland LLC", "Licensed & Insured", "Equal Opportunity", "24/7 Support"] as const;
+export const PARTNERS = ["US-Based LLC", "Licensed & Insured", "Equal Opportunity", "24/7 Support"] as const;
 
 /**
  * Partner / client wordmarks shown in the hero logo strip (reference layout).
@@ -180,7 +190,7 @@ export const WHY_CHOOSE = [
   },
   {
     title: "Licensed & compliant",
-    text: "A Maryland-registered LLC staffed by licensed, insured, background-checked professionals — with the compliance and documentation to back it up.",
+    text: "A registered US LLC staffed by licensed, insured, background-checked professionals — with the compliance and documentation to back it up.",
   },
 ] as const;
 
@@ -225,7 +235,7 @@ export const stockImage = (index: number) => STOCK_IMAGES[index % STOCK_IMAGES.l
    kept here (unused) so they can be restored with the division. */
 export const LEGAL = {
   /** Company-wide line shown site-wide in the footer. */
-  companyLine: `${COMPANY.legalName} is a Maryland-registered limited liability company. Services are provided by licensed and insured professionals in their respective fields.`,
+  companyLine: `${COMPANY.legalName} is a registered limited liability company serving clients across the United States. Services are provided by licensed and insured professionals in their respective fields.`,
   equalHousing: "Equal Housing Opportunity.",
   idxDisclaimer:
     "Real estate listing data, where shown, is provided through a Bright MLS-approved IDX feed and is deemed reliable but not guaranteed.",

@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 /**
  * Light, centered hero foreground — Antigravity-style. Eyebrow → large bold
  * headline → subheadline → two CTAs → scroll cue, choreographed on mount with a
- * gentle scroll-exit. Content is Mehvano's (Maryland services & realty). Sits
+ * gentle scroll-exit. Content is Mehvano's (US-wide services & realty). Sits
  * above the radiating dash-particle burst (HeroParticles) on a light surface.
  *
  * Accessibility / robustness:
@@ -69,7 +69,7 @@ export function HeroContent() {
     >
       <span className="hero-eyebrow inline-flex items-center gap-2 rounded-full border border-cyan-deep/25 bg-white/70 px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-cyan-deep backdrop-blur-sm">
         <span className="h-1.5 w-1.5 rounded-full bg-cyan" aria-hidden />
-        Maryland · Services
+        United States · Services
       </span>
 
       <h1 className="font-display text-4xl font-semibold leading-[1.04] tracking-tight text-ink sm:text-6xl lg:text-[4.75rem]">
@@ -96,8 +96,8 @@ export function HeroContent() {
       </h1>
 
       <p className="hero-sub max-w-xl text-base leading-relaxed text-fg-muted sm:text-lg">
-        Healthcare, technology, and business services — Maryland-registered specialists
-        under one roof. Adapt, scale, and thrive without juggling a dozen vendors.
+        Healthcare, technology, and business services — trusted specialists serving
+        clients nationwide. Adapt, scale, and thrive without juggling a dozen vendors.
       </p>
 
       <div className="mt-2 flex flex-col items-center gap-3 sm:flex-row">

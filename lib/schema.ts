@@ -17,7 +17,13 @@ export const AGENT_ID = `${SITE.url}/#agent`;
 export const ORG_ID = `${SITE.url}/#organization`;
 export const WEBSITE_ID = `${SITE.url}/#website`;
 
+/**
+ * Company-wide service area: the whole United States. Local city/county nodes
+ * are still listed for the real-estate division's hyperlocal specialization,
+ * but the Country node is what defines overall coverage.
+ */
 const areaServed = [
+  { "@type": "Country", name: SERVICE_AREA.country },
   ...ZIPS.map((z) => ({
     "@type": "City",
     name: `${z.city}, ${SERVICE_AREA.state}`,
@@ -36,7 +42,6 @@ export function realEstateAgentSchema() {
     jobTitle: AGENT.role,
     url: SITE.url,
     image: absolute(AGENT.headshot),
-    telephone: AGENT.phone,
     email: AGENT.email,
     description: AGENT.bio,
     areaServed,
@@ -71,7 +76,7 @@ export function organizationSchema() {
     logo: absolute("/logo.png"),
     description: COMPANY.description,
     foundingDate: COMPANY.founded,
-    areaServed: { "@type": "State", name: SERVICE_AREA.stateName },
+    areaServed: { "@type": "Country", name: SERVICE_AREA.country },
     address: {
       "@type": "PostalAddress",
       addressLocality: COMPANY.addressLocality,
@@ -79,7 +84,6 @@ export function organizationSchema() {
       postalCode: COMPANY.postalCode,
       addressCountry: "US",
     },
-    telephone: COMPANY.phone,
     email: COMPANY.email,
     employee: { "@id": AGENT_ID },
     hasOfferCatalog: {

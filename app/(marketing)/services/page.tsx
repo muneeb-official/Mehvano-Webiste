@@ -15,7 +15,7 @@ import { SERVICES } from "@/lib/services";
 export const metadata: Metadata = buildMetadata({
   title: "Our Services — Medical, AI, Real Estate, IT & Business Support",
   description:
-    "Explore everything Mehvano LLC offers Maryland businesses and families: medical & nursing care, AI services, real estate, IT & software, business consulting, staffing, and digital marketing.",
+    "Explore everything Mehvano LLC offers businesses and families across the United States: medical & nursing care, AI services, IT & software, business consulting, staffing, and digital marketing.",
   path: "/services",
 });
 
@@ -37,7 +37,7 @@ export default function ServicesPage() {
       <PageHeader
         eyebrow="Our services"
         title="One company. Every service you need."
-        description={`Mehvano LLC brings ${SERVICES.length} specialist teams together under one trusted, Maryland-registered roof — so you get expert help without managing a dozen vendors.`}
+        description={`Mehvano LLC brings ${SERVICES.length} specialist teams together under one trusted roof, serving clients across the United States — so you get expert help without managing a dozen vendors.`}
         crumbs={crumbs}
       />
 

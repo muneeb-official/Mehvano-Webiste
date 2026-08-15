@@ -7,7 +7,8 @@ import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { cn } from "@/lib/utils";
 
-type ExtraField = "phone" | "address" | "message";
+/** Phone was intentionally removed — the business collects email only. */
+type ExtraField = "address" | "message";
 
 type LeadFormProps = {
   source: LeadSource;
@@ -26,7 +27,7 @@ type Status = "idle" | "submitting" | "success" | "error";
 export function LeadForm({
   source,
   context,
-  fields = ["phone"],
+  fields = [],
   submitLabel = "Send",
   successTitle = "You're all set!",
   successText = "Thanks — I'll be in touch shortly, usually within minutes during the day.",
@@ -60,14 +61,14 @@ export function LeadForm({
       if (!res.ok) {
         setStatus("error");
         setErrors(json.errors ?? {});
-        setMessage(json.error ?? "Something went wrong. Please try again or call me directly.");
+        setMessage(json.error ?? "Something went wrong. Please try again or email us directly.");
         return;
       }
       setStatus("success");
       form.reset();
     } catch {
       setStatus("error");
-      setMessage("Network error. Please try again or call me directly.");
+      setMessage("Network error. Please try again or email us directly.");
     }
   }
 
@@ -96,15 +97,9 @@ export function LeadForm({
         </Field>
       </div>
 
-      {fields.includes("phone") ? (
-        <Field label="Phone" htmlFor="phone" hint="Optional — for a faster reply." error={errors.phone}>
-          <Input id="phone" name="phone" type="tel" autoComplete="tel" placeholder="(410) 555-0142" />
-        </Field>
-      ) : null}
-
       {fields.includes("address") ? (
         <Field label="Property address" htmlFor="address" required error={errors.address}>
-          <Input id="address" name="address" autoComplete="street-address" placeholder="123 Main St, Severn, MD 21144" />
+          <Input id="address" name="address" autoComplete="street-address" placeholder="123 Main St, City, State 12345" />
         </Field>
       ) : null}
 

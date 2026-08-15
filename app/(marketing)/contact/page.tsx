@@ -8,12 +8,12 @@ import { Reveal } from "@/components/ui/Reveal";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
-import { COMPANY, SITE, SOCIALS } from "@/lib/constants";
+import { COMPANY, SERVICE_AREA, SITE, SOCIALS } from "@/lib/constants";
 
 export const metadata: Metadata = buildMetadata({
   title: `Contact ${SITE.brand}`,
   description:
-    "Get in touch with Mehvano LLC about medical & nursing care, AI services, real estate, IT & software, or business support across Maryland. Fast, friendly, no pressure.",
+    "Get in touch with Mehvano LLC about medical & nursing care, AI services, IT & software, or business support across the United States. Fast, friendly, no pressure.",
   path: "/contact",
 });
 
@@ -44,15 +44,6 @@ export default function ContactPage() {
           <Reveal variant="left" className="flex flex-col gap-8">
             <SectionHeading eyebrow="Reach me directly" title="A real person, quick to respond" as="h2" />
             <div className="flex flex-col gap-4">
-              <a href={COMPANY.phoneHref} className="group flex items-center gap-4">
-                <span className="grid h-12 w-12 place-items-center rounded-xl bg-sand text-gold-deep transition-colors group-hover:bg-ink group-hover:text-fg-inverse">
-                  <Icon name="phone" className="h-5 w-5" />
-                </span>
-                <span>
-                  <span className="block text-sm text-fg-subtle">Call or text</span>
-                  <span className="font-display text-lg font-bold text-fg">{COMPANY.phone}</span>
-                </span>
-              </a>
               <a href={COMPANY.emailHref} className="group flex items-center gap-4">
                 <span className="grid h-12 w-12 place-items-center rounded-xl bg-sand text-gold-deep transition-colors group-hover:bg-ink group-hover:text-fg-inverse">
                   <Icon name="mail" className="h-5 w-5" />
@@ -69,7 +60,7 @@ export default function ContactPage() {
                 <span>
                   <span className="block text-sm text-fg-subtle">Service area</span>
                   <span className="font-display text-lg font-bold text-fg">
-                    {COMPANY.addressLocality}, {COMPANY.addressRegion} · All of Maryland
+                    {SERVICE_AREA.country}
                   </span>
                 </span>
               </div>

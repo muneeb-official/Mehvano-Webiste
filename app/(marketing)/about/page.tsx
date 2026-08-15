@@ -15,7 +15,7 @@ import { buildMetadata } from "@/lib/seo";
 import { AGENT, COMPANY, SITE } from "@/lib/constants";
 
 export const metadata: Metadata = buildMetadata({
-  title: `About ${SITE.brand} — One trusted partner across Maryland`,
+  title: `About ${SITE.brand} — One trusted partner across the United States`,
   description: COMPANY.description,
   path: "/about",
 });
@@ -29,7 +29,7 @@ const VALUES: Feature[] = [
   {
     icon: "shield",
     title: "Accountable",
-    text: "Licensed, insured, and background-checked professionals in every field, backed by a registered Maryland LLC that stands behind its work.",
+    text: "Licensed, insured, and background-checked professionals in every field, backed by a registered US LLC that stands behind its work.",
   },
   {
     icon: "layers",
@@ -71,7 +71,7 @@ export default function AboutPage() {
               clients get expert results from people they already know and trust.
             </p>
             <p className="text-[1.05rem] leading-relaxed text-fg-muted">
-              Today, Mehvano LLC serves families and businesses across Maryland.
+              Today, Mehvano LLC serves families and businesses across the United States.
               Every service is delivered by licensed, insured professionals, and
               every client gets one point of contact who owns the outcome. No
               runaround, no finger-pointing — just help that works.
@@ -90,14 +90,14 @@ export default function AboutPage() {
                   <Icon name="building" className="mt-0.5 h-4 w-4 text-gold-deep" />
                   <div>
                     <dt className="text-fg-subtle">Entity</dt>
-                    <dd className="font-medium text-fg">{COMPANY.legalName}, a Maryland LLC</dd>
+                    <dd className="font-medium text-fg">{COMPANY.legalName}, a registered US LLC</dd>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Icon name="map-pin" className="mt-0.5 h-4 w-4 text-gold-deep" />
                   <div>
                     <dt className="text-fg-subtle">Serving</dt>
-                    <dd className="font-medium text-fg">Clients statewide across Maryland</dd>
+                    <dd className="font-medium text-fg">Clients nationwide across the United States</dd>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -111,8 +111,7 @@ export default function AboutPage() {
                 </div>
               </dl>
               <div className="mt-auto flex w-full flex-col gap-2 border-t border-line pt-5">
-                <Button href={COMPANY.phoneHref} className="w-full" icon="phone">{COMPANY.phone}</Button>
-                <Button href={COMPANY.emailHref} variant="outline" className="w-full" icon="mail">Email us</Button>
+                <Button href={COMPANY.emailHref} className="w-full" icon="mail">{COMPANY.email}</Button>
               </div>
             </Card>
           </Reveal>

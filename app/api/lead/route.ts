@@ -26,7 +26,7 @@ export async function POST(request: Request) {
   const result = await deliverLead(data);
   if (!result.ok) {
     return NextResponse.json(
-      { ok: false, error: "We couldn't submit that just now. Please try again or call directly." },
+      { ok: false, error: "We couldn't submit that just now. Please try again or email us directly." },
       { status: 502 }
     );
   }

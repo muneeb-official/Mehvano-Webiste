@@ -53,9 +53,9 @@ export default function HomePage() {
             </h2>
             <p className="max-w-xl text-base leading-relaxed text-fg-muted sm:text-lg">
               Mehvano LLC brings healthcare, technology, and business services
-              together under one trusted, Maryland-registered roof. With licensed
-              specialists in every field, we help families and businesses adapt,
-              scale, and thrive — without juggling a dozen vendors.
+              together under one trusted roof, serving clients across the United
+              States. With licensed specialists in every field, we help families
+              and businesses adapt, scale, and thrive — without juggling a dozen vendors.
             </p>
             <div>
               <Button href="/about" variant="outline">Learn more</Button>

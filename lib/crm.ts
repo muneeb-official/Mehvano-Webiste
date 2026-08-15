@@ -17,7 +17,7 @@ export type LeadPayload = {
   source: LeadSource;
   name: string;
   email: string;
-  phone?: string;
+  /** NOTE: phone is intentionally not collected — email is the only channel. */
   message?: string;
   /** Property address for home-value requests. */
   address?: string;
@@ -60,7 +60,6 @@ export function validateLead(input: Partial<LeadPayload>): {
       source: input.source as LeadSource,
       name,
       email,
-      phone: input.phone?.trim() || undefined,
       message: input.message?.trim() || undefined,
       address: input.address?.trim() || undefined,
       context: input.context?.trim() || undefined,

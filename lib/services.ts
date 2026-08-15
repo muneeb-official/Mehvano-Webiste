@@ -51,11 +51,11 @@ export const SERVICES: Service[] = [
     name: "Medical & Nursing",
     title: "Medical & Nursing Services",
     icon: "heart-pulse",
-    tagline: "Compassionate, licensed care and healthcare staffing across Maryland.",
+    tagline: "Compassionate, licensed care and healthcare staffing across the United States.",
     summary:
       "Reliable home health, private-duty nursing, and medical staffing that keeps patients safe and facilities fully covered — delivered by vetted, licensed professionals.",
     overview:
-      "From in-home caregiving to per-diem nurse staffing for clinics and facilities, our medical division connects families and healthcare organizations across Maryland with dependable, compassionate, fully-credentialed talent. Every caregiver is background-checked, license-verified, and matched to the specific needs of the patient or facility.",
+      "From in-home caregiving to per-diem nurse staffing for clinics and facilities, our medical division connects families and healthcare organizations across the United States with dependable, compassionate, fully-credentialed talent. Every caregiver is background-checked, license-verified, and matched to the specific needs of the patient or facility.",
     offerings: [
       { title: "Home health & private-duty nursing", text: "Skilled and non-skilled care at home — from companionship and ADLs to RN/LPN clinical care." },
       { title: "Healthcare staffing", text: "Per-diem, contract, and travel placements of RNs, LPNs, CNAs, and allied professionals for facilities." },
@@ -79,7 +79,7 @@ export const SERVICES: Service[] = [
     summary:
       "Custom AI solutions, chatbots, and workflow automation that cut costs, speed up operations, and give small businesses enterprise-grade capability.",
     overview:
-      "We help Maryland businesses put AI to work — not as a buzzword, but as a tool that answers customers at 2 a.m., drafts the report nobody has time for, and removes hours of manual data entry. From strategy to a shipped, integrated solution, we handle the whole build and keep it running.",
+      "We help businesses across the US put AI to work — not as a buzzword, but as a tool that answers customers at 2 a.m., drafts the report nobody has time for, and removes hours of manual data entry. From strategy to a shipped, integrated solution, we handle the whole build and keep it running.",
     offerings: [
       { title: "AI chatbots & assistants", text: "Custom assistants for support, lead capture, and internal knowledge — trained on your data." },
       { title: "Workflow automation", text: "Automate repetitive tasks across your tools so your team focuses on higher-value work." },
@@ -128,7 +128,7 @@ export const SERVICES: Service[] = [
     icon: "briefcase",
     tagline: "Launch, structure, and grow your business the right way.",
     summary:
-      "LLC formation, bookkeeping, compliance, and growth strategy — the practical guidance new and growing Maryland businesses need.",
+      "LLC formation, bookkeeping, compliance, and growth strategy — the practical guidance new and growing US businesses need.",
     overview:
       "Starting or scaling a business is easier with a partner who's done it before. We help you form your LLC, stay compliant, keep clean books, and build a realistic plan for growth — so you can focus on the work you actually want to do.",
     offerings: [
@@ -140,7 +140,7 @@ export const SERVICES: Service[] = [
     highlights: [
       { title: "Founder-friendly", text: "Plain-English guidance without the jargon or billable-hour anxiety." },
       { title: "End to end", text: "From formation to growth, one team through every stage." },
-      { title: "Local knowledge", text: "We know Maryland's requirements and the local market." },
+      { title: "Local knowledge", text: "We know state-by-state requirements and local markets across the US." },
     ],
     image: stockImage(4),
     ctaLabel: "Book a consultation",

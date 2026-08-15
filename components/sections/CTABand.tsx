@@ -11,7 +11,7 @@ type CTABandProps = {
   text?: string;
   primary?: { label: string; href: string };
   secondary?: { label: string; href: string };
-  /** Small line under the copy; defaults to the company name + phone. */
+  /** Small line under the copy; defaults to the company name + email. */
   footnote?: string;
   /** Horizontal scroll-slide. Off when it's a panel in the homepage deck. */
   slide?: boolean;
@@ -24,7 +24,7 @@ export function CTABand({
   text = "One conversation is all it takes. Tell us what you need — care, technology, or business support — and we'll point you to the right team. We respond fast, usually within minutes.",
   primary = { label: "Talk to Us", href: "/contact" },
   secondary = { label: "Explore Services", href: "/services" },
-  footnote = `${COMPANY.legalName} · ${COMPANY.phone}`,
+  footnote = `${COMPANY.legalName} · ${COMPANY.email}`,
   slide = true,
 }: CTABandProps) {
   const inner = (
