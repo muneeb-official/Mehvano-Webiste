@@ -4,8 +4,6 @@ import { fontVariables } from "./fonts";
 import { SITE } from "@/lib/constants";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { MotionRoot } from "@/components/animation";
-// realEstateAgentSchema is temporarily omitted while the real-estate division
-// is offline — re-add it (import + in the JsonLd data array below) to restore.
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {

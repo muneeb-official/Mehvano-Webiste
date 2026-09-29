@@ -12,7 +12,7 @@ import { CTABand } from "@/components/sections/CTABand";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
-import { AGENT, COMPANY, SITE } from "@/lib/constants";
+import { COMPANY, SERVICE_AREA, SITE } from "@/lib/constants";
 
 export const metadata: Metadata = buildMetadata({
   title: `About ${SITE.brand} — One trusted partner across the United States`,
@@ -60,7 +60,7 @@ export default function AboutPage() {
 
       {/* Story + snapshot card */}
       <Section tone="paper" spacing="md">
-        <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr] lg:items-start">
+        <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr] lg:items-stretch">
           <Reveal variant="left" className="flex flex-col gap-5">
             <SectionHeading title="One team, built to handle whatever you need" as="h2" />
             <p className="text-lg leading-relaxed text-fg-muted">
@@ -83,34 +83,20 @@ export default function AboutPage() {
           </Reveal>
 
           <Reveal variant="right" delay={120} className="h-full">
-            <Card tone="cream" padding="lg" className="flex h-full flex-col gap-5">
-              <p className="font-display text-xl font-bold text-fg">Company snapshot</p>
-              <dl className="flex flex-col gap-4 text-sm">
-                <div className="flex items-start gap-3">
-                  <Icon name="building" className="mt-0.5 h-4 w-4 text-gold-deep" />
-                  <div>
-                    <dt className="text-fg-subtle">Entity</dt>
-                    <dd className="font-medium text-fg">{COMPANY.legalName}, a registered US LLC</dd>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Icon name="map-pin" className="mt-0.5 h-4 w-4 text-gold-deep" />
-                  <div>
-                    <dt className="text-fg-subtle">Serving</dt>
-                    <dd className="font-medium text-fg">Clients nationwide across the United States</dd>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Icon name="home" className="mt-0.5 h-4 w-4 text-gold-deep" />
-                  <div>
-                    <dt className="text-fg-subtle">Real estate division</dt>
-                    <dd className="font-medium text-fg">
-                      {AGENT.name}, {AGENT.role} — MD #{AGENT.licenseNumber}
-                    </dd>
-                  </div>
-                </div>
-              </dl>
-              <div className="mt-auto flex w-full flex-col gap-2 border-t border-line pt-5">
+            <Card tone="cream" padding="lg" className="flex h-full flex-col gap-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-fg-subtle">
+                Company snapshot
+              </p>
+              <div className="flex flex-1 flex-col justify-center gap-5">
+                <span className="grid h-14 w-14 place-items-center rounded-full bg-paper text-gold-deep shadow-card">
+                  <Icon name="globe" className="h-6 w-6" />
+                </span>
+                <p className="font-display text-3xl font-bold leading-tight text-fg sm:text-4xl">
+                  {SERVICE_AREA.coverage}
+                </p>
+                
+              </div>
+              <div className="flex w-full flex-col gap-2 border-t border-line pt-6">
                 <Button href={COMPANY.emailHref} className="w-full" icon="mail">{COMPANY.email}</Button>
               </div>
             </Card>

@@ -35,8 +35,8 @@ export const SITE = {
 export const COMPANY = {
   legalName: "Mehvano LLC",
   founded: "2024",
-  email: "info@mehvano.com",
-  emailHref: "mailto:info@mehvano.com",
+  email: "mehvish.aslam@mehvano.com",
+  emailHref: "mailto:mehvish.aslam@mehvano.com",
   /** WhatsApp Business account identifier (NOT a legal license/registration #). */
   whatsappBusinessId: "105325809",
   addressLocality: "Severn",
@@ -50,15 +50,11 @@ export const COMPANY = {
 
 export const AGENT = {
   name: "Mehvish Aslam",
-  role: "REALTOR®",
-  licenseLabel: "Maryland Real Estate License",
-  licenseNumber: "5012582",
-  // TODO: confirm with broker before launch — the broker legally holds the license.
-  brokerage: "Brokerage Name, LLC",
-  email: "info@mehvano.com",
-  emailHref: "mailto:info@mehvano.com",
+  role: "Founder & Managing Director",
+  email: "mehvish.aslam@mehvano.com",
+  emailHref: "mailto:mehvish.aslam@mehvano.com",
   headshot: "/agent/mehvish-aslam.jpg",
-  bio: "Mehvish Aslam is a Maryland REALTOR® serving buyers and sellers across Anne Arundel and Howard County — with deep local knowledge of Severn, Pasadena, and Ellicott City. She pairs hometown expertise with modern, data-driven marketing so clients move with clarity and confidence.",
+  bio: "Mehvish Aslam is the founder and managing director of Mehvano LLC, serving families and businesses across the United States.",
 } as const;
 
 /**
@@ -77,7 +73,7 @@ export const SERVICE_AREA = {
   /** Cities beyond the core zips, used in schema areaServed + copy. */
   extendedCities: ["Odenton", "Annapolis", "Severna Park"],
   /** Company-wide coverage line for the multi-service LLC. */
-  coverage: "Serving clients nationwide across the United States",
+  coverage: "Serving across the United States",
   /** Short form for badges, stat strips, and inline copy. */
   short: "United States",
 } as const;
@@ -140,7 +136,7 @@ export const SOCIALS = [
 /** Social-proof stats shown in the hero + about page. */
 export const STATS = [
   { value: "6", suffix: " services", label: "One trusted partner" },
-  { value: "US", suffix: "", label: "Serving the United States" },
+  { value: "US", suffix: "", label: "Serving across the United States" },
   { value: "<5", suffix: " min", label: "Median response time" },
 ] as const;
 
@@ -230,8 +226,7 @@ export const STOCK_IMAGES = [
 export const stockImage = (index: number) => STOCK_IMAGES[index % STOCK_IMAGES.length];
 
 /** Legal / compliance strings surfaced in the footer. */
-/* NOTE: Real-estate compliance lines (equalHousing / idxDisclaimer /
-   brokerageLine) are hidden while the real-estate division is offline. They are
+/* NOTE: Real-estate compliance lines (equalHousing / idxDisclaimer) are hidden while the real-estate division is offline. They are
    kept here (unused) so they can be restored with the division. */
 export const LEGAL = {
   /** Company-wide line shown site-wide in the footer. */
@@ -239,7 +234,6 @@ export const LEGAL = {
   equalHousing: "Equal Housing Opportunity.",
   idxDisclaimer:
     "Real estate listing data, where shown, is provided through a Bright MLS-approved IDX feed and is deemed reliable but not guaranteed.",
-  brokerageLine: `Real Estate: ${AGENT.name}, ${AGENT.role} — ${AGENT.licenseLabel} #${AGENT.licenseNumber}. Brokerage: ${AGENT.brokerage}.`,
   disclaimer:
     "Information on this site is for general marketing purposes and is not legal, tax, medical, or financial advice.",
 } as const;

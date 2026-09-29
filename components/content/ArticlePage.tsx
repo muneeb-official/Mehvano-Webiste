@@ -77,7 +77,7 @@ export function ArticlePage({ article }: { article: Article }) {
                 <Avatar name={AGENT.name} size={48} />
                 <div className="leading-tight">
                   <p className="font-display font-bold text-fg">{AGENT.name}</p>
-                  <p className="text-xs text-fg-subtle">{AGENT.role} · MD #{AGENT.licenseNumber}</p>
+                  <p className="text-xs text-fg-subtle">{AGENT.role}</p>
                 </div>
               </div>
               <p className="mt-4 text-sm leading-relaxed text-fg-muted">

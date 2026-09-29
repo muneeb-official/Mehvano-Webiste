@@ -6,7 +6,7 @@
  * defined once and stays consistent everywhere (name, license, service area).
  */
 import type { Article, Faq } from "@/content/types";
-import { AGENT, COMPANY, SERVICE_AREA, SITE, ZIPS } from "./constants";
+import { AGENT, COMPANY, SERVICE_AREA, SITE } from "./constants";
 import { SERVICES } from "./services";
 
 const absolute = (path = "/"): string =>
@@ -17,26 +17,11 @@ export const AGENT_ID = `${SITE.url}/#agent`;
 export const ORG_ID = `${SITE.url}/#organization`;
 export const WEBSITE_ID = `${SITE.url}/#website`;
 
-/**
- * Company-wide service area: the whole United States. Local city/county nodes
- * are still listed for the real-estate division's hyperlocal specialization,
- * but the Country node is what defines overall coverage.
- */
-const areaServed = [
-  { "@type": "Country", name: SERVICE_AREA.country },
-  ...ZIPS.map((z) => ({
-    "@type": "City",
-    name: `${z.city}, ${SERVICE_AREA.state}`,
-    postalCode: z.zip,
-  })),
-  ...SERVICE_AREA.counties.map((c) => ({ "@type": "AdministrativeArea", name: c })),
-];
-
-/** RealEstateAgent — the core entity AI needs to recommend her. */
-export function realEstateAgentSchema() {
+/** Person — the founder, referenced as author / employee by other schemas. */
+export function personSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": "RealEstateAgent",
+    "@type": "Person",
     "@id": AGENT_ID,
     name: AGENT.name,
     jobTitle: AGENT.role,
@@ -44,21 +29,6 @@ export function realEstateAgentSchema() {
     image: absolute(AGENT.headshot),
     email: AGENT.email,
     description: AGENT.bio,
-    areaServed,
-    knowsAbout: [
-      "Residential real estate",
-      "Home buying",
-      "Home selling",
-      "Relocation to Fort Meade",
-      "First-time home buyers",
-    ],
-    memberOf: { "@type": "Organization", name: AGENT.brokerage },
-    hasCredential: {
-      "@type": "EducationalOccupationalCredential",
-      credentialCategory: "license",
-      name: AGENT.licenseLabel,
-      identifier: AGENT.licenseNumber,
-    },
     worksFor: { "@id": ORG_ID },
   };
 }
